@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دُرَّةٌ | DURRA — أطقم الصلاة الفاخرة في البويرة</title>
+    <!-- خطوط جوجل: أميري للخط العربي الأصيل وكايرو للواجهة العصرية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,700&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- مكتبة Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- أيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                        serif: ['Amiri', 'serif'],
+                    },
+                    colors: {
+                        pearl: '#FCF9F6',
+                        blush: '#F7ECEE',
+                        dusty: '#C48289',
+                        burgundy: {
+                            800: '#5E3037',
+                            900: '#4A252B',
+                            950: '#33171C'
+                        },
+                        gold: {
+                            400: '#D6B162',
+                            500: '#C59B47',
+                            600: '#A37D32'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FCF9F6;
+            color: #2B1619;
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .luxury-shadow {
+            box-shadow: 0 20px 50px -15px rgba(74, 37, 43, 0.08);
+        }
+        .burgundy-grad {
+            background: linear-gradient(135deg, #5E3037 0%, #4A252B 100%);
+        }
+        .messenger-grad {
+            background: linear-gradient(135deg, #00B2FF 0%, #006AFF 100%);
+        }
+        .pearl-blush-grad {
+            background: linear-gradient(180deg, #F7ECEE 0%, #FCF9F6 100%);
+        }
+        .pulse-order {
+            animation: softPulse 2.5s infinite;
+        }
+        @keyframes softPulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 106, 255, 0.35); }
+            70% { box-shadow: 0 0 0 12px rgba(0, 106, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 106, 255, 0); }
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-20 sm:pb-0">
+
+    <!-- 1. شريط الإعلان العلوي -->
+    <div id="top-announcement-bar" class="burgundy-grad text-pearl text-[11px] sm:text-sm py-2.5 px-3 text-center font-bold tracking-wide">
+        ✨ توصيل مجاني 100% إلى باب المنزل في كامل ولاية البويرة (45 بلدية) • الدفع عند الاستلام بعد المعاينة ✨
+    </div>
+
+    <!-- 2. الهيدر الرئيسي (نظيف تماماً للزبائن بدون أي زر للإدارة) -->
+    <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 border-b border-dusty/25">
+        <div class="max-w-6xl mx-auto px-3 sm:px-6 h-20 sm:h-24 flex items-center justify-between gap-2">
+            <!-- الشعار الرسمي رقم 3 (النقر 5 مرات متتالية يفتح نافذة الرمز السري للإدارة) -->
+            <a href="#" onclick="handleSecretLogoTap(event)" class="flex items-center gap-2 sm:gap-3.5 group select-none min-w-0">
+                <div id="header-logo-container" class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 transition-transform duration-300 group-hover:scale-105 flex items-center justify-center bg-pearl rounded-2xl border border-gold-400/40 p-1 shadow-xs">
+                    <!-- يتم حقن SVG الشعار رقم 3 بمعرّفات فريدة -->
+                </div>
+                <div class="flex flex-col min-w-0">
+                    <div class="flex items-center gap-1.5 sm:gap-2">
+                        <span class="font-serif text-2xl sm:text-3xl font-bold text-burgundy-900 leading-none">دُرَّةٌ</span>
+                        <span class="text-gold-500 text-xs">✦</span>
+                        <span class="font-serif text-sm sm:text-base font-bold tracking-[0.22em] text-gold-600 uppercase">DURRA</span>
+                    </div>
+                    <span class="text-[10px] sm:text-xs text-stone-500 font-bold mt-1 truncate">أطقم الصلاة الفاخرة • ولاية البويرة</span>
+                </div>
+            </a>
+
+            <!-- أزرار الزبائن فقط (الطلب + استفسار عبر ماسنجر وواتساب) -->
+            <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+                <a href="#order-form-box" onclick="if(!document.getElementById('admin-view').classList.contains('hidden')) switchView('store');" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold burgundy-grad text-white shadow-sm hover:opacity-95 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>اطلبي الآن</span>
+                </a>
+                <a id="header-messenger-btn" href="https://m.me/durra.bouira" target="_blank" class="px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold messenger-grad text-white shadow-sm hover:opacity-95 transition flex items-center gap-1.5" title="استفسار عبر ماسنجر">
+                    <i class="fa-brands fa-facebook-messenger text-base"></i>
+                    <span class="hidden md:inline">استفسار ماسنجر</span>
+                </a>
+                <a id="header-wa-btn" href="https://wa.me/213554684983" target="_blank" class="px-3 sm:px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-blush text-burgundy-900 border border-dusty/40 hover:bg-dusty/15 transition flex items-center gap-1.5" title="واتساب">
+                    <i class="fa-brands fa-whatsapp text-[#25D366] text-base"></i>
+                    <span class="hidden lg:inline">واتساب</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- حاوية الإشعارات المنبثقة -->
+    <div id="toast-container" class="fixed top-24 left-4 right-4 sm:left-auto sm:right-6 sm:w-96 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- إشعار الطلبات المباشرة للزوار -->
+    <div id="social-proof-toast" class="hidden fixed bottom-24 sm:bottom-6 right-4 sm:right-6 z-30 bg-white/95 backdrop-blur-md border border-gold-400/50 rounded-2xl p-3 shadow-xl flex items-center gap-3 max-w-xs transition-all duration-500 transform translate-y-10 opacity-0">
+        <div class="w-10 h-10 rounded-full bg-blush text-burgundy-900 flex items-center justify-center shrink-0 border border-dusty/30">
+            <i class="fa-solid fa-bag-shopping text-gold-600"></i>
+        </div>
+        <div class="text-xs">
+            <p id="social-proof-text" class="font-bold text-burgundy-900">أمينة من البويرة طلبت طقم الصلاة</p>
+            <span id="social-proof-time" class="text-[11px] text-stone-400">منذ 3 دقائق • توصيل مجاني</span>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 1. واجهة المتجر للزبائن (STOREFRONT VIEW)                             -->
+    <!-- ===================================================================== -->
+    <main id="store-view" class="flex-grow">
+
+        <!-- شريط اختيار الموديل (يظهر تلقائياً عند إضافة أكثر من موديل) -->
+        <section id="models-bar-section" class="max-w-6xl mx-auto px-4 sm:px-6 pt-5 hidden">
+            <div class="flex items-center justify-between mb-2.5">
+                <span class="text-xs sm:text-sm font-extrabold text-burgundy-900 flex items-center gap-1.5">
+                    <i class="fa-solid fa-sparkles text-gold-500"></i>
+                    <span>اختاري الموديل المفضل لديكِ:</span>
+                </span>
+                <span id="models-count-label" class="text-xs text-stone-500 font-semibold"></span>
+            </div>
+            <div id="models-switcher-list" class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+                <!-- أزرار الموديلات -->
+            </div>
+        </section>
+
+        <!-- قسم المنتج الرئيسي ونموذج الطلب السريع -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 py-5 sm:py-8">
+            <div id="product-hero-card" class="bg-white rounded-3xl luxury-shadow border border-dusty/25 overflow-hidden">
+                <!-- يتم حقنه ديناميكياً -->
+            </div>
+        </section>
+
+        <!-- قسم قصة العلامة التجارية مع الشعار الفيكتوري رقم 3 -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-dusty/20 luxury-shadow flex flex-col md:flex-row items-center gap-6">
+                <div id="story-logo-container" class="w-32 h-32 sm:w-36 sm:h-36 shrink-0 bg-pearl rounded-3xl border border-gold-400/50 p-2.5 flex items-center justify-center shadow-xs">
+                    <!-- يتم حقن SVG الشعار رقم 3 بمعرّف فريد -->
+                </div>
+                <div class="text-center md:text-right space-y-2">
+                    <span class="text-xs font-extrabold text-gold-600 uppercase tracking-wider">عراقة وأناقة جزائرية</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-burgundy-900">علامة دُرَّةٌ | DURRA لأطقم الصلاة الفاخرة</h2>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-3xl">
+                        صُممت أطقم صلاة <strong>دُرَّةٌ</strong> بعناية فائقة لتجمع بين الحشمة الكاملة، برودة القماش، والألوان الهادئة التي تبعث على الطمأنينة والخشوع. نقدم لزبوناتنا في كامل بلديات <strong>ولاية البويرة</strong> تجربة تسوق راقية مع توصيل مجاني إلى باب المنزل وحق معاينة الطرد قبل الدفع.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم: لماذا تختارين طقم دُرَّةٌ؟ -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-8">
+            <div class="text-center mb-5">
+                <span class="text-xs font-extrabold text-gold-600 tracking-wider uppercase">جودة تليق بكِ</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-burgundy-900 mt-0.5">لماذا تختارين طقم دُرَّةٌ؟</h2>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-dusty/20 flex flex-col items-center text-center gap-2.5 luxury-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-blush text-burgundy-900 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <h4 class="font-extrabold text-xs sm:text-sm text-burgundy-900">قماش كريب بارد غير شفاف</h4>
+                    <p class="text-[11px] sm:text-xs text-stone-500 leading-relaxed">خامة ناعمة وانسيابية تمنحكِ راحة تامة وستر كامل أثناء الصلاة</p>
+                </div>
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-dusty/20 flex flex-col items-center text-center gap-2.5 luxury-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-gold-600 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-maximize"></i>
+                    </div>
+                    <h4 class="font-extrabold text-xs sm:text-sm text-burgundy-900">مقاس عام مريح للجميع</h4>
+                    <p class="text-[11px] sm:text-xs text-stone-500 leading-relaxed">تفصيل فضفاض بمقاس موحد يناسب جميع الأوزان والأطوال بدون قياسات</p>
+                </div>
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-dusty/20 flex flex-col items-center text-center gap-2.5 luxury-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-blush text-burgundy-900 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-scissors"></i>
+                    </div>
+                    <h4 class="font-extrabold text-xs sm:text-sm text-burgundy-900">خياطة متقنة وتصميم أنيق</h4>
+                    <p class="text-[11px] sm:text-xs text-stone-500 leading-relaxed">تشطيب عالي الدقة مع خصر مطاطي مرن لا يضغط</p>
+                </div>
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-dusty/20 flex flex-col items-center text-center gap-2.5 luxury-shadow">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-gold-600 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h4 class="font-extrabold text-xs sm:text-sm text-burgundy-900">معاينة الطرد قبل الدفع</h4>
+                    <p class="text-[11px] sm:text-xs text-stone-500 leading-relaxed">افحصي الطقم وتأكدي من لونه وجودته قبل دفع أي دينار في البويرة</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- جدول القياسات والقماش + تقييمات زبائن البويرة -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- جدول القياسات والقماش -->
+                <div class="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-7 border border-dusty/20 luxury-shadow">
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <span class="w-9 h-9 rounded-xl bg-blush text-burgundy-900 flex items-center justify-center">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                        </span>
+                        <h3 class="text-lg sm:text-xl font-extrabold text-burgundy-900">جدول القياسات والمواصفات (حجم عام)</h3>
+                    </div>
+                    <div class="overflow-hidden rounded-2xl border border-dusty/20 mb-4">
+                        <table class="w-full text-right text-xs sm:text-sm">
+                            <thead class="bg-blush text-burgundy-900 font-extrabold">
+                                <tr>
+                                    <th class="p-3">القطعة / المواصفة</th>
+                                    <th class="p-3">التفاصيل الدقيقة</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-stone-100 text-stone-700">
+                                <tr>
+                                    <td class="p-3 font-bold text-burgundy-900">طول الخمار (من الرأس)</td>
+                                    <td class="p-3">1.15 متر (غطاء كامل للصدر والذراعين)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-burgundy-900">طول التنورة</td>
+                                    <td class="p-3">1.05 متر (واسعة وانسيابية)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-burgundy-900">محيط الخصر المرن</td>
+                                    <td class="p-3">مطاطي مريح يتمدد من 65 سم إلى 125 سم</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-burgundy-900">نوع القماش والعناية</td>
+                                    <td class="p-3">كريب فاخر بارد • لا ينكمش • غسيل عادي 30°</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-stone-500 bg-pearl p-3 rounded-xl border border-dusty/15">
+                        <i class="fa-solid fa-circle-info text-gold-600 ml-1"></i>
+                        يناسب الطقم جميع السيدات والفتيات بطول من <strong>1.50 م إلى 1.78 م</strong> بكل راحة وأناقة.
+                    </p>
+                </div>
+
+                <!-- تقييمات زبائننا في ولاية البويرة -->
+                <div class="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-7 border border-dusty/20 luxury-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-9 h-9 rounded-xl bg-amber-50 text-gold-600 flex items-center justify-center">
+                                <i class="fa-solid fa-star"></i>
+                            </span>
+                            <h3 class="text-lg sm:text-xl font-extrabold text-burgundy-900">تقييمات زبائننا في البويرة</h3>
+                        </div>
+                        <span class="text-xs font-extrabold bg-amber-50 text-gold-600 px-3 py-1 rounded-full">4.9 / 5 ★</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="p-3.5 rounded-2xl bg-blush/65 border border-dusty/15">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-bold text-xs text-burgundy-900">سارة ب. — البويرة وسط</span>
+                                <span class="text-gold-500 text-xs">★★★★★</span>
+                            </div>
+                            <p class="text-xs text-stone-600">"ما شاء الله القماش بارد وخفيف بزاف، واللون الوردي الترابي يهبل في الواقع. وصلني لباب الدار والتوصيل مجاني."</p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-blush/65 border border-dusty/15">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-bold text-xs text-burgundy-900">نادية م. — الأخضرية</span>
+                                <span class="text-gold-500 text-xs">★★★★★</span>
+                            </div>
+                            <p class="text-xs text-stone-600">"طلبت طقمين واحد باللؤلؤي وواحد بالعنابي ليما، الحجم واسع ومستور الله يبارك والخياطة نظيفة بزاف."</p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-blush/65 border border-dusty/15">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-bold text-xs text-burgundy-900">إيمان ك. — عين بسام</span>
+                                <span class="text-gold-500 text-xs">★★★★★</span>
+                            </div>
+                            <p class="text-xs text-stone-600">"تعامل راقي وصدق في المواعيد، فتحت الطرد وشفتو قبل ما نخلص. ربي يباركلكم في رزقكم."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- الأسئلة الشائعة التفاعلية (FAQ Accordion) -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-12">
+            <div class="text-center mb-5">
+                <h3 class="text-lg sm:text-xl font-extrabold text-burgundy-900">الأسئلة الشائعة</h3>
+            </div>
+            <div class="space-y-2.5" id="faq-accordion">
+                <div class="bg-white rounded-2xl border border-dusty/20 overflow-hidden">
+                    <button type="button" onclick="toggleFaq(0)" class="w-full p-4 text-right font-bold text-xs sm:text-sm text-burgundy-900 flex items-center justify-between">
+                        <span>هل التوصيل مجاني حقاً إلى جميع بلديات ولاية البويرة؟</span>
+                        <i id="faq-icon-0" class="fa-solid fa-chevron-down text-gold-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-body-0" class="hidden px-4 pb-4 text-xs text-stone-600 leading-relaxed border-t border-stone-100 pt-2.5">
+                        نعم، التوصيل مجاني 100% إلى باب المنزل في كافة بلديات ولاية البويرة الـ 45 (البويرة، الأخضرية، عين بسام، سور الغزلان، امشدالة، بشلول وغيرها) دون أي رسوم إضافية.
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl border border-dusty/20 overflow-hidden">
+                    <button type="button" onclick="toggleFaq(1)" class="w-full p-4 text-right font-bold text-xs sm:text-sm text-burgundy-900 flex items-center justify-between">
+                        <span>هل يمكنني معاينة الطقم قبل الدفع؟</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down text-gold-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-body-1" class="hidden px-4 pb-4 text-xs text-stone-600 leading-relaxed border-t border-stone-100 pt-2.5">
+                        بكل تأكيد! نضمن لكِ حق فتح الطرد ومعاينة القماش واللون والخياطة أمام عامل التوصيل قبل دفع المبلغ.
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl border border-dusty/20 overflow-hidden">
+                    <button type="button" onclick="toggleFaq(2)" class="w-full p-4 text-right font-bold text-xs sm:text-sm text-burgundy-900 flex items-center justify-between">
+                        <span>كيف أختار المقاس المناسب لي؟</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down text-gold-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-body-2" class="hidden px-4 pb-4 text-xs text-stone-600 leading-relaxed border-t border-stone-100 pt-2.5">
+                        طقم دُرَّةٌ مصمم بمقاس عام وموحد (Free Size) بقصة واسعة ومريحة وخمار طويل، مما يجعله مناسباً لجميع المقاسات والأطوال دون الحاجة لاختيار رقم قياس.
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl border border-dusty/20 overflow-hidden">
+                    <button type="button" onclick="toggleFaq(3)" class="w-full p-4 text-right font-bold text-xs sm:text-sm text-burgundy-900 flex items-center justify-between">
+                        <span>كيف يتم إرسال الطلب عبر ماسنجر فيسبوك؟</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down text-gold-600 transition-transform"></i>
+                    </button>
+                    <div id="faq-body-3" class="hidden px-4 pb-4 text-xs text-stone-600 leading-relaxed border-t border-stone-100 pt-2.5">
+                        بعد إدخال اسمكِ ورقم هاتفكِ وبلديتكِ في البويرة، اضغطي على زر <strong>"تأكيد الطلب عبر ماسنجر"</strong>؛ سيقوم المتجر بنسخ جميع تفاصيل طلبكِ تلقائياً وفتح محادثة صفحتنا على ماسنجر لتقومي بلصق الرسالة وإرسالها في ثانية واحدة!
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================================================================== -->
+    <!-- 2. لوحة إدارة المتجر المخفية والمحمية برمز سري (ADMIN DASHBOARD)      -->
+    <!-- ===================================================================== -->
+    <section id="admin-view" class="hidden flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        
+        <!-- رأس لوحة التحكم -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 bg-white p-5 rounded-3xl border border-dusty/25 luxury-shadow">
+            <div>
+                <h1 class="text-xl sm:text-2xl font-extrabold text-burgundy-900 flex items-center gap-2">
+                    <span>إدارة متجر</span>
+                    <span class="font-serif text-2xl sm:text-3xl text-gold-600">دُرَّةٌ | DURRA</span>
+                </h1>
+                <p class="text-xs sm:text-sm text-stone-500 mt-0.5">ضبط حساب ماسنجر والواتساب، متابعة طلبات الزبائن، وإدارة الموديلات وصور الألوان.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2.5 shrink-0">
+                <button onclick="openModelModal()" class="burgundy-grad text-white px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold shadow-md hover:opacity-95 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-plus-circle"></i>
+                    <span>إضافة موديل جديد</span>
+                </button>
+                <button onclick="logoutAdmin()" class="bg-blush text-burgundy-900 border border-dusty/40 px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold hover:bg-dusty/20 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>خروج من الإدارة</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- بطاقات الإحصائيات السريعة -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-dusty/20 luxury-shadow">
+                <span class="text-xs text-stone-500 font-bold block mb-1">الموديلات المتاحة</span>
+                <span id="admin-stat-models" class="text-2xl sm:text-3xl font-black text-burgundy-900">1</span>
+            </div>
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-dusty/20 luxury-shadow">
+                <span class="text-xs text-stone-500 font-bold block mb-1">إجمالي القطع بالمخزون</span>
+                <span id="admin-stat-stock" class="text-2xl sm:text-3xl font-black text-gold-600">0</span>
+            </div>
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-dusty/20 luxury-shadow">
+                <span class="text-xs text-stone-500 font-bold block mb-1">الطلبات المستلمة</span>
+                <span id="admin-stat-orders" class="text-2xl sm:text-3xl font-black text-burgundy-900">0</span>
+            </div>
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-dusty/20 luxury-shadow">
+                <span class="text-xs text-stone-500 font-bold block mb-1">إجمالي المبيعات</span>
+                <span id="admin-stat-revenue" class="text-2xl sm:text-3xl font-black text-emerald-700">0 دج</span>
+            </div>
+        </div>
+
+        <!-- تبويبات لوحة التحكم -->
+        <div class="flex gap-2 border-b border-dusty/25 mb-6 overflow-x-auto no-scrollbar">
+            <button onclick="switchAdminTab('settings')" id="admin-tab-settings" class="px-4 py-3 text-xs sm:text-sm font-extrabold border-b-2 border-burgundy-900 text-burgundy-900 whitespace-nowrap transition">
+                <i class="fa-solid fa-address-card ml-1.5"></i>إعدادات الحساب والتواصل
+            </button>
+            <button onclick="switchAdminTab('models')" id="admin-tab-models" class="px-4 py-3 text-xs sm:text-sm font-bold border-b-2 border-transparent text-stone-500 hover:text-burgundy-900 whitespace-nowrap transition">
+                <i class="fa-solid fa-images ml-1.5"></i>المنتجات وصور الألوان
+            </button>
+            <button onclick="switchAdminTab('orders')" id="admin-tab-orders" class="px-4 py-3 text-xs sm:text-sm font-bold border-b-2 border-transparent text-stone-500 hover:text-burgundy-900 whitespace-nowrap transition">
+                <i class="fa-solid fa-clipboard-list ml-1.5"></i>الطلبات (<span id="admin-tab-orders-badge">0</span>)
+            </button>
+        </div>
+
+        <!-- تبويب 1: إعدادات الحساب والتواصل والأمان -->
+        <div id="admin-panel-settings" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-7 bg-white p-6 rounded-3xl border border-dusty/20 luxury-shadow space-y-4">
+                <h3 class="font-extrabold text-lg text-burgundy-900 border-b border-stone-100 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-gold-600"></i>
+                    <span>بيانات حسابات التواصل والاستقبال</span>
+                </h3>
+                
+                <!-- إعداد حساب ماسنجر فيسبوك -->
+                <div class="bg-blue-50/60 p-4 rounded-2xl border border-blue-200/80 space-y-2">
+                    <label class="block text-xs sm:text-sm font-extrabold text-[#006AFF] flex items-center gap-1.5">
+                        <i class="fa-brands fa-facebook-messenger text-base"></i>
+                        <span>اسم مستخدم صفحة فيسبوك / ماسنجر (Messenger Username أو ID)</span>
+                    </label>
+                    <input type="text" id="cfg-messenger" placeholder="مثال: durra.bouira أو رابط الصفحة" class="w-full p-3 rounded-xl border border-blue-200 bg-white text-sm font-bold focus:border-[#006AFF] focus:outline-none text-left" dir="ltr">
+                    <p class="text-[11px] text-stone-600 leading-relaxed">
+                        أدخلي اسم المستخدم لصفحة الحملة الإعلانية (مثلاً <code class="bg-white px-1.5 py-0.5 rounded border">durra.bouira</code>) أو الصقي رابط الصفحة بالكامل، وسيتم توجيه الزبائن إلى محادثة ماسنجر مباشرةً.
+                    </p>
+                </div>
+
+                <!-- رقم الواتساب + رقم الاتصال المباشر -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                        <label class="block text-xs font-extrabold text-stone-700 mb-1 flex items-center gap-1.5">
+                            <i class="fa-brands fa-whatsapp text-[#25D366] text-sm"></i>
+                            <span>رقم الواتساب (لاستقبال الطلبات)</span>
+                        </label>
+                        <input type="text" id="cfg-whatsapp" placeholder="0554684983" class="w-full p-3 rounded-xl border border-stone-300 text-sm font-bold focus:border-burgundy-900 focus:outline-none text-left" dir="ltr">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-extrabold text-stone-700 mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-phone text-burgundy-900 text-xs"></i>
+                            <span>رقم الهاتف للاتصال المباشر</span>
+                        </label>
+                        <input type="text" id="cfg-phone" placeholder="0554684983" class="w-full p-3 rounded-xl border border-stone-300 text-sm font-bold focus:border-burgundy-900 focus:outline-none text-left" dir="ltr">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-stone-700 mb-1">نص الشريط الإعلاني العلوي</label>
+                    <input type="text" id="cfg-announcement" class="w-full p-3 rounded-xl border border-stone-300 text-sm focus:border-burgundy-900 focus:outline-none">
+                </div>
+
+                <!-- رفع شعار مخصص أو استخدام الشعار الرسمي رقم 3 -->
+                <div class="bg-pearl p-4 rounded-2xl border border-dusty/25 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="block text-xs font-extrabold text-burgundy-900">شعار المتجر (الشعار الرسمي رقم 3 مفعّل)</label>
+                        <button type="button" id="reset-logo-btn" onclick="resetCustomLogo()" class="hidden text-[11px] font-bold text-red-600 hover:underline">العودة للشعار الرسمي رقم 3</button>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <label class="px-3.5 py-2 rounded-xl bg-white border border-dusty/40 text-xs font-bold text-burgundy-900 cursor-pointer hover:bg-blush transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-image"></i>
+                            <span>رفع صورة شعار مخصصة (اختياري)</span>
+                            <input type="file" accept="image/*" onchange="handleCustomLogoUpload(event)" class="hidden">
+                        </label>
+                        <span class="text-[11px] text-stone-500">أو اتركيه لاستخدام الشعار الذهبي رقم 3</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-1">
+                    <label class="flex items-center gap-2 cursor-pointer text-xs font-bold text-stone-700">
+                        <input type="checkbox" id="cfg-social-proof" class="w-4 h-4 accent-burgundy-900">
+                        <span>تفعيل إشعارات الطلبات المباشرة للزوار (Social Proof)</span>
+                    </label>
+                </div>
+
+                <button onclick="saveStoreConfig()" class="w-full burgundy-grad text-white py-3.5 rounded-xl text-sm font-extrabold shadow-md hover:opacity-95 transition">
+                    <i class="fa-solid fa-floppy-disk ml-1.5"></i>حفظ جميع الإعدادات
+                </button>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+                <!-- الأمان والرابط السري -->
+                <div class="bg-white p-6 rounded-3xl border border-dusty/20 luxury-shadow space-y-4">
+                    <h3 class="font-extrabold text-lg text-burgundy-900 border-b border-stone-100 pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-gold-600"></i>
+                        <span>حماية لوحة الإدارة والرابط السري</span>
+                    </h3>
+                    <div>
+                        <label class="block text-xs font-bold text-stone-700 mb-1">الرمز السري للدخول إلى الإدارة (PIN)</label>
+                        <input type="text" id="cfg-admin-pin" maxlength="6" placeholder="2026" class="w-full p-3 rounded-xl border border-stone-300 text-base font-black tracking-widest focus:border-burgundy-900 focus:outline-none text-center" dir="ltr">
+                    </div>
+                    <div class="bg-pearl p-3.5 rounded-2xl border border-dusty/25 space-y-2">
+                        <label class="block text-xs font-extrabold text-burgundy-900">رابط الإدارة السري الخاص بكِ:</label>
+                        <div class="flex items-center gap-2">
+                            <input type="text" id="secret-admin-url-input" readonly class="w-full p-2 rounded-lg border border-stone-200 bg-white text-[11px] text-stone-600 text-left" dir="ltr">
+                            <button type="button" onclick="copySecretAdminUrl()" class="px-3 py-2 rounded-lg bg-blush text-burgundy-900 border border-dusty/35 text-xs font-extrabold whitespace-nowrap hover:bg-dusty/20 transition flex items-center gap-1">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>نسخ</span>
+                            </button>
+                        </div>
+                        <p class="text-[11px] text-stone-500">يمكنكِ أيضاً النقر <strong>5 مرات متتالية</strong> على الشعار في أعلى المتجر لفتح نافذة الرمز السري.</p>
+                    </div>
+                </div>
+
+                <!-- النسخ الاحتياطي -->
+                <div class="bg-white p-6 rounded-3xl border border-dusty/20 luxury-shadow space-y-3">
+                    <h3 class="font-extrabold text-base text-burgundy-900 border-b border-stone-100 pb-2.5">النسخ الاحتياطي ونقل البيانات (JSON)</h3>
+                    <button onclick="exportStoreJSON()" class="w-full py-3 rounded-xl bg-blush text-burgundy-900 border border-dusty/40 text-xs font-extrabold hover:bg-dusty/20 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-download"></i>
+                        <span>تحميل نسخة احتياطية للمتجر وصوره (JSON)</span>
+                    </button>
+                    <label class="w-full py-3 rounded-xl bg-pearl text-stone-700 border border-stone-300 text-xs font-bold hover:bg-stone-100 transition flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-upload"></i>
+                        <span>استعادة نسخة احتياطية (JSON)</span>
+                        <input type="file" accept=".json" onchange="importStoreJSON(event)" class="hidden">
+                    </label>
+                    <button onclick="resetToFactoryDefaults()" class="w-full py-2 rounded-xl text-red-600 text-xs font-bold hover:bg-red-50 transition">
+                        إعادة ضبط المتجر للإعدادات الافتراضية
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- تبويب 2: المنتجات وصور الألوان -->
+        <div id="admin-panel-models" class="hidden space-y-6">
+            <!-- يتم حقنه ديناميكياً -->
+        </div>
+
+        <!-- تبويب 3: إدارة الطلبات -->
+        <div id="admin-panel-orders" class="hidden bg-white rounded-3xl p-5 sm:p-6 border border-dusty/20 luxury-shadow">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+                <h2 class="text-lg font-extrabold text-burgundy-900">سجل طلبات ولاية البويرة</h2>
+                <div class="flex items-center gap-2">
+                    <select id="order-status-filter" onchange="renderAdminOrders()" class="p-2.5 rounded-xl border border-stone-300 text-xs font-bold bg-pearl focus:outline-none">
+                        <option value="all">جميع الطلبات</option>
+                        <option value="جديد">جديد</option>
+                        <option value="تم التأكيد">تم التأكيد</option>
+                        <option value="قيد التوصيل">قيد التوصيل</option>
+                        <option value="مكتمل">مكتمل</option>
+                        <option value="ملغى">ملغى</option>
+                    </select>
+                    <button onclick="exportOrdersCSV()" class="px-3.5 py-2.5 rounded-xl bg-emerald-700 text-white text-xs font-bold hover:bg-emerald-800 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-file-excel"></i>
+                        <span>تصدير Excel</span>
+                    </button>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-right border-collapse min-w-[780px]">
+                    <thead>
+                        <tr class="bg-blush text-burgundy-900 text-xs font-extrabold">
+                            <th class="p-3.5 rounded-r-xl">الطلب</th>
+                            <th class="p-3.5">الزبونة</th>
+                            <th class="p-3.5">العنوان (البويرة)</th>
+                            <th class="p-3.5">الموديل والألوان</th>
+                            <th class="p-3.5">المبلغ</th>
+                            <th class="p-3.5">الحالة</th>
+                            <th class="p-3.5 rounded-l-xl">تواصل</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-orders-tbody" class="divide-y divide-stone-100 text-sm">
+                    </tbody>
+                </table>
+            </div>
+            <div id="admin-no-orders" class="hidden text-center py-12 text-stone-400">
+                <i class="fa-solid fa-inbox text-4xl mb-2 block text-dusty/50"></i>
+                <p class="text-sm font-bold">لا توجد طلبات مسجلة في هذا التصنيف حالياً.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- شريط الطلب السريع الثابت في أسفل شاشة الهاتف -->
+    <div id="mobile-sticky-bar" class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-dusty/25 p-3 z-30 sm:hidden flex items-center justify-between gap-3 shadow-lg">
+        <div>
+            <span class="text-[10px] text-stone-500 block font-bold">توصيل مجاني في البويرة</span>
+            <span id="sticky-mobile-price" class="text-base font-black text-burgundy-900">2,000 دج</span>
+        </div>
+        <a href="#order-form-box" class="flex-1 burgundy-grad text-white py-3 rounded-xl text-xs font-extrabold text-center shadow">
+            اطلبي الآن (الدفع عند الاستلام)
+        </a>
+    </div>
+
+    <!-- أزرار التواصل العائمة (ماسنجر + واتساب) -->
+    <div class="fixed bottom-20 sm:bottom-6 left-4 sm:left-6 z-40 flex flex-col gap-2.5">
+        <a id="floating-messenger-btn" href="https://m.me/durra.bouira" target="_blank" title="تواصلي معنا عبر ماسنجر"
+           class="w-12 h-12 sm:w-14 sm:h-14 rounded-full messenger-grad text-white shadow-xl flex items-center justify-center text-2xl sm:text-3xl hover:scale-105 transition">
+            <i class="fa-brands fa-facebook-messenger"></i>
+        </a>
+        <a id="floating-wa-btn" href="https://wa.me/213554684983" target="_blank" title="تواصلي معنا عبر واتساب"
+           class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white shadow-xl flex items-center justify-center text-2xl sm:text-3xl hover:scale-105 transition">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="bg-burgundy-950 text-pearl/90 mt-auto border-t border-gold-500/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3.5">
+                <div id="footer-logo-container" class="w-14 h-14 bg-white rounded-2xl p-1 flex items-center justify-center shrink-0 shadow">
+                    <!-- يتم حقن SVG الشعار رقم 3 بمعرّف فريد -->
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-serif text-2xl font-bold text-white">دُرَّةٌ</span>
+                        <span class="text-gold-400">✦</span>
+                        <span class="font-serif text-sm font-bold tracking-[0.2em] text-gold-400">DURRA</span>
+                    </div>
+                    <p class="text-[11px] text-pearl/75">توصيل مجاني لباب المنزل في كامل ولاية البويرة (45 بلدية)</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <a id="footer-phone-link" href="tel:0554684983" class="text-xs font-bold text-gold-400 hover:underline flex items-center gap-1.5" dir="ltr">
+                    <i class="fa-solid fa-phone"></i>
+                    <span id="footer-phone-text">0554684983</span>
+                </a>
+                <span class="text-pearl/30">|</span>
+                <p class="text-xs text-pearl/70">جميع الحقوق محفوظة © 2026 متجر دُرَّةٌ</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- النوافذ المنبثقة (Modals)                                             -->
+    <!-- ===================================================================== -->
+
+    <!-- 1. نافذة الدخول السري للإدارة (PIN Modal) -->
+    <div id="admin-pin-modal" class="fixed inset-0 bg-black/65 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 sm:p-7 text-center shadow-2xl border border-dusty/30">
+            <div class="w-14 h-14 rounded-2xl bg-blush text-burgundy-900 flex items-center justify-center mx-auto mb-3 text-2xl border border-gold-400/50">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-extrabold text-burgundy-900 mb-1">الدخول إلى إدارة دُرَّةٌ</h3>
+            <p class="text-xs text-stone-500 mb-4">هذه المنطقة مخصصة لمالك المتجر فقط. يرجى إدخال الرمز السري.</p>
+            
+            <form onsubmit="verifyAdminPin(event)" class="space-y-3.5">
+                <input type="password" id="admin-pin-input" inputmode="numeric" maxlength="6" required placeholder="••••" 
+                    class="w-full p-3.5 rounded-2xl border border-stone-300 bg-pearl text-center text-2xl font-black tracking-[0.5em] text-burgundy-900 focus:border-burgundy-900 focus:outline-none" dir="ltr">
+                
+                <p id="admin-pin-error" class="hidden text-xs font-bold text-red-600 bg-red-50 py-2 px-3 rounded-xl border border-red-200">
+                    الرمز السري غير صحيح، يرجى المحاولة مرة أخرى.
+                </p>
+
+                <div class="flex gap-2.5 pt-1">
+                    <button type="submit" class="flex-1 burgundy-grad text-white py-3 rounded-xl font-bold text-sm shadow-md hover:opacity-95 transition">
+                        دخول الإدارة
+                    </button>
+                    <button type="button" onclick="closeAdminPinModal()" class="px-4 py-3 rounded-xl bg-stone-100 text-stone-600 font-bold text-xs hover:bg-stone-200 transition">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. نافذة إضافة / تعديل موديل ورفع صور متعددة لكل لون -->
+    <div id="model-modal" class="fixed inset-0 bg-black/65 backdrop-blur-xs z-50 hidden items-center justify-center p-3 sm:p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-dusty/30 overflow-hidden">
+            <div class="p-4 sm:p-5 border-b border-stone-100 flex items-center justify-between bg-pearl">
+                <h3 id="model-modal-title" class="text-base sm:text-lg font-extrabold text-burgundy-900">تعديل الموديل ورفع صور الألوان</h3>
+                <button onclick="closeModelModal()" class="w-8 h-8 rounded-full bg-stone-200/70 hover:bg-stone-300 flex items-center justify-center text-stone-600">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <form id="model-form" onsubmit="saveModelForm(event)" class="p-4 sm:p-6 overflow-y-auto space-y-5 flex-grow">
+                <input type="hidden" id="form-model-id">
+                
+                <div class="flex items-center justify-between bg-blush/60 p-3 rounded-2xl border border-dusty/20">
+                    <span class="text-xs font-extrabold text-burgundy-900">حالة ظهور الموديل في المتجر:</span>
+                    <label class="flex items-center gap-2 cursor-pointer text-xs font-bold text-burgundy-900">
+                        <input type="checkbox" id="form-model-active" checked class="w-4 h-4 accent-burgundy-900">
+                        <span>مفعّل وظاهر للزبائن</span>
+                    </label>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                        <label class="block text-xs font-bold text-stone-700 mb-1">اسم الموديل *</label>
+                        <input type="text" id="form-model-name" required placeholder="مثال: طقم الصلاة الملكي - دُرَّةٌ" class="w-full p-2.5 rounded-xl border border-stone-300 text-sm focus:border-burgundy-900 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-stone-700 mb-1">شارة القياس *</label>
+                        <input type="text" id="form-model-badge" required value="حجم عام وموحد • بدون قياسات" class="w-full p-2.5 rounded-xl border border-stone-300 text-sm focus:border-burgundy-900 focus:outline-none">
+                    </div>
+                </div>
+
+                <!-- الأسعار والباقات -->
+                <div class="grid grid-cols-3 gap-2.5 bg-pearl p-3.5 rounded-2xl border border-dusty/20">
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-700 mb-1">سعر 1 طقم (دج)</label>
+                        <input type="number" id="form-model-price" required min="500" step="50" value="2000" class="w-full p-2 rounded-xl border border-stone-300 bg-white text-sm font-extrabold text-burgundy-900">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-700 mb-1">سعر 2 أطقم (دج)</label>
+                        <input type="number" id="form-bundle-2" required min="500" step="50" value="3700" class="w-full p-2 rounded-xl border border-stone-300 bg-white text-sm font-extrabold text-burgundy-900">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-700 mb-1">سعر 3 أطقم (دج)</label>
+                        <input type="number" id="form-bundle-3" required min="500" step="50" value="5400" class="w-full p-2 rounded-xl border border-stone-300 bg-white text-sm font-extrabold text-burgundy-900">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-stone-700 mb-1">وصف الموديل والقماش *</label>
+                    <textarea id="form-model-desc" rows="2" required class="w-full p-2.5 rounded-xl border border-stone-300 text-sm focus:border-burgundy-900 focus:outline-none"></textarea>
+                </div>
+
+                <!-- إدارة الألوان ورفع عدة صور لكل لون -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <label class="block text-xs sm:text-sm font-extrabold text-burgundy-900">الألوان والصور الخاصة بكل لون</label>
+                            <p class="text-[11px] text-stone-500">يمكنكِ اختيار عدة صور دفعة واحدة لكل لون من معرض الصور في هاتفك.</p>
+                        </div>
+                        <button type="button" onclick="addColorRowToModal()" class="text-xs font-bold text-burgundy-900 bg-blush px-3 py-1.5 rounded-xl border border-dusty/30 hover:bg-dusty/20">
+                            <i class="fa-solid fa-plus"></i> إضافة لون
+                        </button>
+                    </div>
+                    <div id="modal-colors-container" class="space-y-3">
+                        <!-- يتم حقنه ديناميكياً -->
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t border-stone-100 flex items-center justify-end gap-2.5">
+                    <button type="button" onclick="closeModelModal()" class="px-5 py-2.5 rounded-xl bg-stone-100 text-stone-700 text-xs sm:text-sm font-bold hover:bg-stone-200">إلغاء</button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl burgundy-grad text-white text-xs sm:text-sm font-bold shadow-md hover:opacity-95">حفظ الموديل والصور</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. نافذة مقارنة الألوان السبعة جنباً إلى جنب -->
+    <div id="compare-colors-modal" class="fixed inset-0 bg-black/65 backdrop-blur-xs z-50 hidden items-center justify-center p-3 sm:p-4">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-dusty/30 overflow-hidden">
+            <div class="p-4 sm:p-5 border-b border-stone-100 flex items-center justify-between bg-pearl">
+                <h3 class="text-base sm:text-lg font-extrabold text-burgundy-900 flex items-center gap-2">
+                    <i class="fa-solid fa-palette text-gold-600"></i>
+                    <span>مقارنة جميع الألوان جنباً إلى جنب</span>
+                </h3>
+                <button onclick="closeCompareModal()" class="w-8 h-8 rounded-full bg-stone-200/70 hover:bg-stone-300 flex items-center justify-center text-stone-600">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="compare-colors-grid" class="p-4 sm:p-6 overflow-y-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+                <!-- بطاقات الألوان -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. نافذة تكبير الصورة (Lightbox) -->
+    <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 bg-black/85 z-50 hidden items-center justify-center p-4">
+        <div class="relative max-w-3xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="mb-3 self-end w-10 h-10 rounded-full bg-white/20 text-white hover:bg-white/30 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="lightbox-img" src="" class="max-h-[78vh] w-auto rounded-2xl shadow-2xl object-contain bg-white">
+            <p id="lightbox-caption" class="text-white text-sm font-bold mt-3 bg-black/50 px-4 py-1.5 rounded-full"></p>
+        </div>
+    </div>
+
+    <!-- 5. نافذة تأكيد الطلب للزبونة (مع أزرار ماسنجر وواتساب ونسخ الرسالة) -->
+    <div id="success-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 text-center shadow-2xl border border-gold-400/50">
+            <div class="w-16 h-16 rounded-full bg-blush text-burgundy-900 flex items-center justify-center mx-auto mb-3 text-3xl border border-gold-400/50">
+                <i class="fa-solid fa-circle-check text-gold-600"></i>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-burgundy-900 mb-1">تم تسجيل طلبكِ بنجاح!</h3>
+            <p class="text-xs text-stone-500 mb-3">رقم الطلب: <span id="confirm-order-num" class="font-extrabold text-burgundy-900"></span></p>
+            
+            <div id="confirm-order-details" class="bg-pearl rounded-2xl p-3.5 text-right text-xs space-y-1.5 mb-4 border border-dusty/20">
+            </div>
+
+            <div class="space-y-2.5">
+                <a id="confirm-messenger-btn" href="#" target="_blank" onclick="copyLastOrderMessage()" class="w-full py-3.5 rounded-xl messenger-grad hover:opacity-95 text-white font-extrabold text-sm shadow-md transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-facebook-messenger text-lg"></i>
+                    <span>إرسال الطلب عبر ماسنجر (Messenger)</span>
+                </a>
+                <a id="confirm-wa-btn" href="#" target="_blank" class="w-full py-3 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-sm shadow-sm transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>إرسال الطلب عبر واتساب (WhatsApp)</span>
+                </a>
+                <button type="button" onclick="copyLastOrderMessage()" class="w-full py-2.5 rounded-xl bg-blush text-burgundy-900 border border-dusty/30 font-bold text-xs hover:bg-dusty/20 transition flex items-center justify-center gap-1.5">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>نسخ تفاصيل الطلب يدوياً</span>
+                </button>
+                <button onclick="closeSuccessModal()" class="w-full py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 font-bold text-xs transition">
+                    العودة إلى المتجر
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- منطق التطبيق (JavaScript)                                             -->
+    <!-- ===================================================================== -->
+    <script>
+        // دالة توليد الشعار رقم 3 بصيغة SVG نقية بمعرّفات تدرّج فريدة لكل موضع (حتى لا يختفي أبداً)
+        function getDurraLogo3SVG(uid) {
+            return `
+                <svg viewBox="0 0 220 220" class="w-full h-full block" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="شعار دُرَّةٌ DURRA">
+                    <defs>
+                        <linearGradient id="gold-${uid}" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#E6C77E"/>
+                            <stop offset="50%" stop-color="#C59B47"/>
+                            <stop offset="100%" stop-color="#967025"/>
+                        </linearGradient>
+                        <radialGradient id="pearl-${uid}" cx="35%" cy="35%" r="65%">
+                            <stop offset="0%" stop-color="#FFFFFF"/>
+                            <stop offset="45%" stop-color="#FCF9F6"/>
+                            <stop offset="80%" stop-color="#E8DDD0"/>
+                            <stop offset="100%" stop-color="#C7B59C"/>
+                        </radialGradient>
+                    </defs>
+                    <!-- الحلقة الذهبية المفتوحة في الأسفل -->
+                    <path d="M 76 144 A 66 66 0 1 1 144 144" fill="none" stroke="url(#gold-${uid})" stroke-width="4.5" stroke-linecap="round"/>
+                    <!-- بتلات الوردة الذهبية المحيطة باللؤلؤة -->
+                    <g fill="none" stroke="url(#gold-${uid})" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M 90 68 Q 110 50 130 68"/>
+                        <path d="M 96 61 Q 110 44 124 61"/>
+                        <path d="M 82 79 Q 72 62 93 62"/>
+                        <path d="M 138 79 Q 148 62 127 62"/>
+                        <path d="M 83 90 C 66 83, 66 64, 83 70"/>
+                        <path d="M 137 90 C 154 83, 154 64, 137 70"/>
+                        <path d="M 86 103 C 62 101, 58 81, 77 83"/>
+                        <path d="M 134 103 C 158 101, 162 81, 143 83"/>
+                        <path d="M 110 116 C 90 116, 72 107, 68 94 C 81 94, 96 103, 110 116 Z" fill="#FCF9F6"/>
+                        <path d="M 110 116 C 130 116, 148 107, 152 94 C 139 94, 124 103, 110 116 Z" fill="#FCF9F6"/>
+                    </g>
+                    <!-- اللؤلؤة المضيئة في قلب الوردة -->
+                    <circle cx="110" cy="89" r="17" fill="url(#pearl-${uid})" stroke="url(#gold-${uid})" stroke-width="2.4"/>
+                    <ellipse cx="104" cy="83" rx="5" ry="3" transform="rotate(-25 104 83)" fill="#FFFFFF" opacity="0.95"/>
+                    <!-- الخطان الذهبيان العموديان على جانبي كلمة دُرَّةٌ -->
+                    <line x1="76" y1="138" x2="76" y2="175" stroke="url(#gold-${uid})" stroke-width="2.6" stroke-linecap="round"/>
+                    <line x1="144" y1="138" x2="144" y2="175" stroke="url(#gold-${uid})" stroke-width="2.6" stroke-linecap="round"/>
+                    <!-- كلمة دُرَّةٌ بالتشكيل بالذهبي -->
+                    <text x="110" y="165" text-anchor="middle" font-family="'Amiri', serif" font-weight="700" font-size="40" fill="url(#gold-${uid})">دُرَّةٌ</text>
+                    <!-- كلمة DURRA بالعنابي الملكي -->
+                    <text x="110" y="200" text-anchor="middle" font-family="'Amiri', Georgia, serif" font-weight="700" font-size="24" letter-spacing="3" fill="#4A252B">DURRA</text>
+                </svg>
+            `;
+        }
+
+        // جميع بلديات ولاية البويرة (45 بلدية)
+        const BOUIRA_COMMUNES = [
+            'البويرة', 'الأخضرية', 'عين بسام', 'سور الغزلان', 'امشدالة',
+            'بشلول', 'حيزر', 'القادرية', 'برج أوخريص', 'الهاشمية',
+            'وادي البردي', 'الأصنام', 'العجيبة', 'أهل القصر', 'أولاد راشد',
+            'الحجرة الزرقاء', 'الروراوة', 'بئر غبالو', 'عين العلوي', 'عين الحجر',
+            'سوق الخميس', 'المقراني', 'جباحية', 'عمر', 'بودربالة',
+            'معلة', 'الزبربر', 'قرومة', 'بوكرام', 'الشرفة',
+            'أغبالو', 'سحاريج', 'تاغزوت', 'آيت لعزيز', 'عين الترك',
+            'تاقديت', 'ديرة', 'المعمورة', 'ريدان', 'المسدور',
+            'الحاكمة', 'الدشمية', 'خبوزية', 'تاوريرت', 'إغرم'
+        ];
+
+        // الألوان السبعة الافتراضية
+        const DEFAULT_COLORS = [
+            { id: 'col-1', name: 'اللؤلؤي الدافئ', hex: '#F4EFE6', accent: '#C59B47', stock: 15, images: [] },
+            { id: 'col-2', name: 'الوردي الترابي', hex: '#C48289', accent: '#F7E7CE', stock: 16, images: [] },
+            { id: 'col-3', name: 'البيج الرملي', hex: '#DFCBB2', accent: '#9E7B56', stock: 14, images: [] },
+            { id: 'col-4', name: 'الأخضر المريمي', hex: '#8FA395', accent: '#F3EFEA', stock: 12, images: [] },
+            { id: 'col-5', name: 'الأزرق السماوي', hex: '#88A9BE', accent: '#F3EFEA', stock: 11, images: [] },
+            { id: 'col-6', name: 'البنفسجي الهادئ', hex: '#A390A8', accent: '#F7ECEE', stock: 10, images: [] },
+            { id: 'col-7', name: 'العنابي الملكي', hex: '#4A252B', accent: '#E3C278', stock: 13, images: [] }
+        ];
+
+        const INITIAL_MODELS = [
+            {
+                id: 'model-durra-royal',
+                name: 'طقم الصلاة الفاخر - دُرَّةٌ',
+                badge: 'حجم عام وموحد • بدون قياسات',
+                price: 2000,
+                bundle2Price: 3700,
+                bundle3Price: 5400,
+                active: true,
+                description: 'طقم صلاة فاخر مكون من خمار طويل فضفاض وتنورة واسعة بخصر مطاطي مرن يناسب جميع المقاسات. مصنوع من قماش الكريب البارد وغير الشفاف ليمنحكِ الستر والأناقة والراحة التامة.',
+                colors: JSON.parse(JSON.stringify(DEFAULT_COLORS))
+            }
+        ];
+
+        let appState = {
+            models: [],
+            orders: [],
+            config: {
+                messengerUsername: 'durra.bouira',
+                whatsapp: '0554684983',
+                phone: '0554684983',
+                adminPin: '2026',
+                announcement: '✨ توصيل مجاني 100% إلى باب المنزل في كامل ولاية البويرة (45 بلدية) • الدفع عند الاستلام بعد المعاينة ✨',
+                socialProof: true,
+                customLogo: ''
+            }
+        };
+
+        let activeModelId = null;
+        let activeColorId = null;
+        let activePhotoIndex = 0;
+        let selectedBundleQty = 1;
+        let bundleColorSelections = [];
+        let tempModalColors = [];
+        let socialProofInterval = null;
+        let isAdminAuthenticated = false;
+        let logoTapCount = 0;
+        let logoTapTimer = null;
+        let lastFormattedOrderText = '';
+
+        function formatAlgerianWhatsApp(rawPhone) {
+            let digits = (rawPhone || '0554684983').replace(/\D/g, '');
+            if (digits.startsWith('0')) digits = '213' + digits.substring(1);
+            if (!digits.startsWith('213')) digits = '213' + digits;
+            return digits;
+        }
+
+        function extractMessengerUsername(rawInput) {
+            let val = (rawInput || 'durra.bouira').trim();
+            val = val.replace(/^https?:\/\/(www\.|m\.)?(facebook\.com|fb\.com|m\.me)\//i, '');
+            val = val.replace(/^@/, '').split('?')[0].split('/')[0].trim();
+            return val || 'durra.bouira';
+        }
+
+        function copyTextSafe(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).catch(() => fallbackCopyText(text));
+            } else {
+                fallbackCopyText(text);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            ta.remove();
+        }
+
+        function initStore() {
+            const saved = localStorage.getItem('durra_luxury_store_v7');
+            if (saved) {
+                try {
+                    appState = JSON.parse(saved);
+                } catch (e) {
+                    appState.models = JSON.parse(JSON.stringify(INITIAL_MODELS));
+                }
+            } else {
+                appState.models = JSON.parse(JSON.stringify(INITIAL_MODELS));
+                persistState();
+            }
+
+            if (!appState.models || appState.models.length === 0) {
+                appState.models = JSON.parse(JSON.stringify(INITIAL_MODELS));
+            }
+
+            appState.models.forEach(m => {
+                if (typeof m.active === 'undefined') m.active = true;
+                m.colors.forEach(c => {
+                    if (!Array.isArray(c.images)) c.images = c.image ? [c.image] : [];
+                });
+            });
+
+            if (!appState.config) appState.config = {};
+            if (!appState.config.messengerUsername) appState.config.messengerUsername = 'durra.bouira';
+            if (!appState.config.whatsapp) appState.config.whatsapp = '0554684983';
+            if (!appState.config.phone) appState.config.phone = appState.config.whatsapp;
+            if (!appState.config.adminPin) appState.config.adminPin = '2026';
+
+            const activeModels = appState.models.filter(m => m.active);
+            const firstModel = activeModels[0] || appState.models[0];
+            activeModelId = firstModel.id;
+            const firstColor = firstModel.colors.find(c => c.stock > 0) || firstModel.colors[0];
+            activeColorId = firstColor ? firstColor.id : null;
+            activePhotoIndex = 0;
+            syncBundleColorSelections(firstModel);
+
+            renderBrandLogos();
+            applyConfigToUI();
+            renderStorefront();
+            updateOrdersCounter();
+            startSocialProofLoop();
+            checkSecretAdminTrigger();
+        }
+
+        function renderBrandLogos() {
+            const headerBox = document.getElementById('header-logo-container');
+            const storyBox = document.getElementById('story-logo-container');
+            const footerBox = document.getElementById('footer-logo-container');
+            const resetBtn = document.getElementById('reset-logo-btn');
+
+            if (appState.config.customLogo) {
+                headerBox.innerHTML = `<img src="${appState.config.customLogo}" alt="دُرَّةٌ" class="w-full h-full object-contain rounded-xl">`;
+                storyBox.innerHTML = `<img src="${appState.config.customLogo}" alt="دُرَّةٌ" class="w-full h-full object-contain rounded-2xl">`;
+                footerBox.innerHTML = `<img src="${appState.config.customLogo}" alt="دُرَّةٌ" class="w-full h-full object-contain rounded-xl">`;
+                if (resetBtn) resetBtn.classList.remove('hidden');
+            } else {
+                headerBox.innerHTML = getDurraLogo3SVG('hdr');
+                storyBox.innerHTML = getDurraLogo3SVG('sty');
+                footerBox.innerHTML = getDurraLogo3SVG('ftr');
+                if (resetBtn) resetBtn.classList.add('hidden');
+            }
+        }
+
+        function persistState() {
+            try {
+                localStorage.setItem('durra_luxury_store_v7', JSON.stringify(appState));
+                updateOrdersCounter();
+            } catch (e) {
+                showToast('تنبيه: مساحة التخزين ممتلئة، يرجى تقليل عدد الصور.', 'error');
+            }
+        }
+
+        function applyConfigToUI() {
+            document.getElementById('top-announcement-bar').textContent = appState.config.announcement;
+            document.getElementById('cfg-messenger').value = appState.config.messengerUsername || 'durra.bouira';
+            document.getElementById('cfg-whatsapp').value = appState.config.whatsapp || '0554684983';
+            document.getElementById('cfg-phone').value = appState.config.phone || appState.config.whatsapp || '0554684983';
+            document.getElementById('cfg-admin-pin').value = appState.config.adminPin || '2026';
+            document.getElementById('cfg-announcement').value = appState.config.announcement;
+            document.getElementById('cfg-social-proof').checked = appState.config.socialProof;
+
+            const waHref = `https://wa.me/${formatAlgerianWhatsApp(appState.config.whatsapp)}`;
+            const msgUsername = extractMessengerUsername(appState.config.messengerUsername);
+            const msgHref = `https://m.me/${msgUsername}`;
+
+            document.getElementById('floating-wa-btn').href = waHref;
+            document.getElementById('floating-messenger-btn').href = msgHref;
+
+            const headerWa = document.getElementById('header-wa-btn');
+            if (headerWa) headerWa.href = waHref;
+            const headerMsg = document.getElementById('header-messenger-btn');
+            if (headerMsg) headerMsg.href = msgHref;
+
+            const footerPhoneLink = document.getElementById('footer-phone-link');
+            const footerPhoneText = document.getElementById('footer-phone-text');
+            if (footerPhoneLink && footerPhoneText) {
+                footerPhoneLink.href = `tel:${appState.config.phone}`;
+                footerPhoneText.textContent = appState.config.phone;
+            }
+
+            const secretUrlInput = document.getElementById('secret-admin-url-input');
+            if (secretUrlInput) {
+                secretUrlInput.value = window.location.origin + window.location.pathname + '?admin=durra';
+            }
+        }
+
+        // نظام الدخول السري للإدارة (الرابط ?admin=durra أو النقر 5 مرات على الشعار)
+        function checkSecretAdminTrigger() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'durra' || window.location.hash === '#admin') {
+                openAdminPinModal();
+            }
+        }
+
+        function handleSecretLogoTap(e) {
+            e.preventDefault();
+            if (!document.getElementById('admin-view').classList.contains('hidden')) {
+                switchView('store');
+                return;
+            }
+            logoTapCount++;
+            clearTimeout(logoTapTimer);
+            if (logoTapCount >= 5) {
+                logoTapCount = 0;
+                if (isAdminAuthenticated) {
+                    switchView('admin');
+                } else {
+                    openAdminPinModal();
+                }
+                return;
+            }
+            logoTapTimer = setTimeout(() => {
+                if (logoTapCount === 1) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                logoTapCount = 0;
+            }, 2500);
+        }
+
+        function openAdminPinModal() {
+            const modal = document.getElementById('admin-pin-modal');
+            const input = document.getElementById('admin-pin-input');
+            const err = document.getElementById('admin-pin-error');
+            input.value = '';
+            err.classList.add('hidden');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => input.focus(), 100);
+        }
+
+        function closeAdminPinModal() {
+            const modal = document.getElementById('admin-pin-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function verifyAdminPin(e) {
+            e.preventDefault();
+            const entered = document.getElementById('admin-pin-input').value.trim();
+            const correctPin = appState.config.adminPin || '2026';
+            if (entered === correctPin) {
+                isAdminAuthenticated = true;
+                closeAdminPinModal();
+                switchView('admin');
+                showToast('مرحباً بكِ في لوحة إدارة متجر دُرَّةٌ');
+            } else {
+                const err = document.getElementById('admin-pin-error');
+                err.classList.remove('hidden');
+                document.getElementById('admin-pin-input').value = '';
+                document.getElementById('admin-pin-input').focus();
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminAuthenticated = false;
+            if (window.location.search.includes('admin=durra') || window.location.hash === '#admin') {
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+            switchView('store');
+            showToast('تم تسجيل الخروج من لوحة الإدارة');
+        }
+
+        function copySecretAdminUrl() {
+            const input = document.getElementById('secret-admin-url-input');
+            copyTextSafe(input.value);
+            showToast('تم نسخ رابط الإدارة السري! احفظيه في المفضلة');
+        }
+
+        async function handleCustomLogoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            try {
+                const compressed = await compressImageFile(file, 400, 0.85);
+                appState.config.customLogo = compressed;
+                persistState();
+                renderBrandLogos();
+                showToast('تم تحديث شعار المتجر بنجاح');
+            } catch (e) {
+                showToast('حدث خطأ أثناء رفع الشعار', 'error');
+            }
+        }
+
+        function resetCustomLogo() {
+            appState.config.customLogo = '';
+            persistState();
+            renderBrandLogos();
+            showToast('تمت استعادة الشعار الرسمي رقم 3');
+        }
+
+        function compressImageFile(file, maxWidth = 800, quality = 0.78) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+
+                        if (width > maxWidth) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = reject;
+                    img.src = event.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function showToast(msg, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const el = document.createElement('div');
+            let style = 'burgundy-grad border-gold-400';
+            let icon = 'fa-circle-check text-gold-400';
+
+            if (type === 'error') {
+                style = 'bg-red-700 border-red-300';
+                icon = 'fa-triangle-exclamation text-white';
+            } else if (type === 'messenger') {
+                style = 'messenger-grad border-white/60';
+                icon = 'fa-brands fa-facebook-messenger text-white';
+            }
+
+            el.className = `${style} text-white px-4 py-3.5 rounded-2xl shadow-xl border flex items-center gap-3 text-xs sm:text-sm font-bold transform transition-all duration-300 -translate-y-2 opacity-0 pointer-events-auto leading-snug`;
+            el.innerHTML = `<i class="${icon.startsWith('fa-brands') ? icon : 'fa-solid ' + icon} text-lg shrink-0"></i><span>${msg}</span>`;
+            container.appendChild(el);
+
+            requestAnimationFrame(() => el.classList.remove('-translate-y-2', 'opacity-0'));
+            setTimeout(() => {
+                el.classList.add('-translate-y-2', 'opacity-0');
+                setTimeout(() => el.remove(), 300);
+            }, 5000);
+        }
+
+        function startSocialProofLoop() {
+            if (socialProofInterval) clearInterval(socialProofInterval);
+            const names = ['أمينة', 'فاطمة', 'خديجة', 'مريم', 'سميرة', 'نورة', 'ياسمين', 'حنان', 'كوثر'];
+            const places = ['البويرة', 'الأخضرية', 'عين بسام', 'سور الغزلان', 'بشلول', 'امشدالة', 'حيزر', 'الهاشمية'];
+            
+            socialProofInterval = setInterval(() => {
+                if (!appState.config.socialProof || document.getElementById('store-view').classList.contains('hidden')) return;
+                const toast = document.getElementById('social-proof-toast');
+                const n = names[Math.floor(Math.random() * names.length)];
+                const p = places[Math.floor(Math.random() * places.length)];
+                const model = appState.models.find(m => m.active) || appState.models[0];
+                const mins = Math.floor(Math.random() * 7) + 2;
+
+                document.getElementById('social-proof-text').textContent = `${n} من ${p} طلبت ${model ? model.name : 'طقم الصلاة'}`;
+                document.getElementById('social-proof-time').textContent = `منذ ${mins} دقائق • توصيل مجاني`;
+
+                toast.classList.remove('hidden');
+                requestAnimationFrame(() => toast.classList.remove('translate-y-10', 'opacity-0'));
+
+                setTimeout(() => {
+                    toast.classList.add('translate-y-10', 'opacity-0');
+                    setTimeout(() => toast.classList.add('hidden'), 500);
+                }, 4500);
+            }, 16000);
+        }
+
+        function switchView(view) {
+            const storeEl = document.getElementById('store-view');
+            const adminEl = document.getElementById('admin-view');
+            const mobileBar = document.getElementById('mobile-sticky-bar');
+
+            if (view === 'store') {
+                storeEl.classList.remove('hidden');
+                adminEl.classList.add('hidden');
+                mobileBar.classList.remove('hidden');
+                renderStorefront();
+            } else {
+                if (!isAdminAuthenticated) {
+                    openAdminPinModal();
+                    return;
+                }
+                storeEl.classList.add('hidden');
+                adminEl.classList.remove('hidden');
+                mobileBar.classList.add('hidden');
+                renderAdminDashboard();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getFallbackPrayerSetSVG(colorHex, accentHex, sizeClass = "w-48 h-56 sm:w-56 sm:h-64") {
+            const isLight = ['#F4EFE6', '#DFCBB2'].includes(colorHex.toUpperCase());
+            const stroke = isLight ? '#C9B9A6' : 'rgba(255,255,255,0.22)';
+            return `
+                <svg viewBox="0 0 240 280" class="${sizeClass} drop-shadow-md transition-all duration-300">
+                    <path d="M75 135 L165 135 L188 255 Q120 268 52 255 Z" fill="${colorHex}" stroke="${stroke}" stroke-width="1.5"/>
+                    <path d="M95 140 L82 256 M120 140 L120 260 M145 140 L158 256" stroke="${stroke}" stroke-width="1" fill="none"/>
+                    <path d="M55 246 Q120 258 185 246" stroke="${accentHex}" stroke-width="2.5" fill="none" opacity="0.85"/>
+                    <path d="M120 22 C92 22 78 45 72 75 L45 155 Q120 175 195 155 L168 75 C162 45 148 22 120 22 Z" fill="${colorHex}" stroke="${stroke}" stroke-width="1.5"/>
+                    <ellipse cx="120" cy="54" rx="18" ry="23" fill="#FCF9F6" stroke="${accentHex}" stroke-width="2"/>
+                    <path d="M48 148 Q120 167 192 148" stroke="${accentHex}" stroke-width="2" fill="none" stroke-dasharray="4 3"/>
+                </svg>
+            `;
+        }
+
+        function syncBundleColorSelections(model) {
+            const defaultCol = activeColorId || (model.colors[0] && model.colors[0].id);
+            bundleColorSelections = [defaultCol, defaultCol, defaultCol];
+        }
+
+        function renderStorefront() {
+            const activeModels = appState.models.filter(m => m.active);
+            const modelsPool = activeModels.length > 0 ? activeModels : appState.models;
+            const model = modelsPool.find(m => m.id === activeModelId) || modelsPool[0];
+            if (!model) return;
+            activeModelId = model.id;
+
+            const modelsSection = document.getElementById('models-bar-section');
+            const modelsList = document.getElementById('models-switcher-list');
+            if (modelsPool.length > 1) {
+                modelsSection.classList.remove('hidden');
+                document.getElementById('models-count-label').textContent = `${modelsPool.length} موديلات متوفرة`;
+                modelsList.innerHTML = modelsPool.map(m => {
+                    const isActive = m.id === model.id;
+                    const firstImgColor = m.colors.find(c => c.images && c.images.length > 0);
+                    const thumb = firstImgColor ? firstImgColor.images[0] : '';
+                    return `
+                        <button onclick="selectModel('${m.id}')" class="flex items-center gap-2.5 p-2 pr-3 pl-4 rounded-2xl border text-right shrink-0 transition
+                            ${isActive ? 'border-burgundy-900 bg-white shadow-sm ring-2 ring-burgundy-900/10' : 'border-dusty/25 bg-white/70 hover:bg-white'}">
+                            ${thumb 
+                                ? `<img src="${thumb}" class="w-10 h-10 rounded-xl object-cover border border-stone-200">`
+                                : `<div class="w-10 h-10 rounded-xl bg-blush text-burgundy-900 flex items-center justify-center font-serif font-bold text-sm">دُرَّةٌ</div>`}
+                            <div>
+                                <div class="text-xs font-extrabold text-burgundy-900">${m.name}</div>
+                                <div class="text-[11px] font-bold text-gold-600">${m.price.toLocaleString()} دج</div>
+                            </div>
+                        </button>
+                    `;
+                }).join('');
+            } else {
+                modelsSection.classList.add('hidden');
+            }
+
+            let currentColor = model.colors.find(c => c.id === activeColorId) || model.colors[0];
+            if (currentColor) activeColorId = currentColor.id;
+            const stock = currentColor ? currentColor.stock : 0;
+
+            const colorPhotos = (currentColor && Array.isArray(currentColor.images)) ? currentColor.images : [];
+            if (activePhotoIndex >= colorPhotos.length) activePhotoIndex = 0;
+
+            let galleryHTML = '';
+            if (colorPhotos.length > 0) {
+                const mainSrc = colorPhotos[activePhotoIndex];
+                const thumbsStrip = colorPhotos.length > 1 ? `
+                    <div class="p-3 bg-white border-t border-dusty/15 flex items-center justify-center gap-2.5 overflow-x-auto no-scrollbar">
+                        ${colorPhotos.map((src, i) => `
+                            <button type="button" onclick="selectPhotoIndex(${i})" 
+                                class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 transition shrink-0
+                                ${i === activePhotoIndex ? 'border-burgundy-900 scale-105 shadow-xs' : 'border-transparent opacity-65 hover:opacity-100'}">
+                                <img src="${src}" class="w-full h-full object-cover">
+                            </button>
+                        `).join('')}
+                    </div>
+                ` : '';
+
+                galleryHTML = `
+                    <div class="relative w-full flex-grow min-h-[340px] sm:min-h-[460px] bg-blush flex items-center justify-center overflow-hidden group cursor-zoom-in" onclick="openLightbox('${mainSrc}', '${currentColor.name}')">
+                        <img src="${mainSrc}" alt="${model.name} - ${currentColor.name}" class="w-full h-full object-cover max-h-[520px] transition-transform duration-500 group-hover:scale-105">
+                        
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-xs text-burgundy-900 w-9 h-9 rounded-full shadow flex items-center justify-center text-xs" title="اضغطي لتكبير الصورة">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </div>
+
+                        <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-xs px-4 py-1.5 rounded-full shadow-md border border-dusty/25 text-xs font-extrabold text-burgundy-900 flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-full border border-stone-300" style="background:${currentColor.hex}"></span>
+                            <span>${currentColor.name}</span>
+                            ${colorPhotos.length > 1 ? `<span class="text-[10px] text-gold-600 font-bold">(${activePhotoIndex + 1}/${colorPhotos.length})</span>` : ''}
+                        </div>
+                    </div>
+                    ${thumbsStrip}
+                `;
+            } else {
+                galleryHTML = `
+                    <div class="relative w-full flex-grow min-h-[340px] sm:min-h-[460px] pearl-blush-grad flex flex-col items-center justify-center p-6 select-none">
+                        <div class="w-64 h-64 sm:w-76 sm:h-76 rounded-full border border-gold-400/50 bg-white/90 shadow-sm flex items-center justify-center">
+                            <div class="w-56 h-56 sm:w-64 sm:h-64 rounded-full border border-dashed border-dusty/35 flex items-center justify-center">
+                                ${getFallbackPrayerSetSVG(currentColor.hex, currentColor.accent)}
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-white px-4 py-1.5 rounded-full border border-dusty/25 shadow-xs flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-full border border-stone-300" style="background:${currentColor.hex}"></span>
+                            <span class="text-xs font-extrabold text-burgundy-900">اللون المختار: ${currentColor.name}</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const swatchesHTML = model.colors.map(col => {
+                const isSelected = currentColor && col.id === currentColor.id;
+                const isOut = col.stock <= 0;
+                const isLight = ['#F4EFE6', '#DFCBB2'].includes(col.hex.toUpperCase());
+                const colThumb = col.images && col.images.length > 0 ? col.images[0] : '';
+                return `
+                    <button type="button" onclick="selectColor('${col.id}')" 
+                        class="flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-bold transition
+                        ${isSelected ? 'border-burgundy-900 bg-blush text-burgundy-900 ring-2 ring-burgundy-900/15' : 'border-stone-200 bg-white text-stone-700 hover:border-dusty/50'}
+                        ${isOut ? 'opacity-45' : ''}">
+                        ${colThumb 
+                            ? `<img src="${colThumb}" class="w-6 h-6 rounded-full object-cover border border-stone-300 shrink-0">`
+                            : `<span class="w-5 h-5 rounded-full border border-stone-300 shrink-0 flex items-center justify-center" style="background:${col.hex}">
+                                ${isSelected ? `<i class="fa-solid fa-check text-[10px] ${isLight ? 'text-burgundy-900' : 'text-white'}"></i>` : ''}
+                               </span>`
+                        }
+                        <span>${col.name}</span>
+                        ${col.images && col.images.length > 1 ? `<span class="text-[10px] bg-white px-1.5 rounded text-gold-600 border border-dusty/20">${col.images.length} صور</span>` : ''}
+                        ${isOut ? '<span class="text-[10px] text-red-600">(نفد)</span>' : ''}
+                    </button>
+                `;
+            }).join('');
+
+            const multiPieceColorSelectors = selectedBundleQty > 1 ? `
+                <div class="bg-white/90 p-3 rounded-xl border border-dusty/25 space-y-2 mt-2">
+                    <span class="text-[11px] font-extrabold text-burgundy-900 block">حددي لون كل قطعة في الباقة (يمكنكِ التنويع بين الألوان):</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-${selectedBundleQty} gap-2">
+                        ${Array.from({ length: selectedBundleQty }).map((_, idx) => `
+                            <div>
+                                <label class="block text-[10px] font-bold text-stone-500 mb-0.5">لون الطقم رقم ${idx + 1}:</label>
+                                <select onchange="setBundlePieceColor(${idx}, this.value)" class="w-full p-2 rounded-lg border border-stone-300 bg-pearl text-xs font-bold text-burgundy-900 focus:outline-none">
+                                    ${model.colors.map(c => `<option value="${c.id}" ${bundleColorSelections[idx] === c.id ? 'selected' : ''}>${c.name}</option>`).join('')}
+                                </select>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : '';
+
+            const bundlesHTML = `
+                <div class="space-y-2 mb-3">
+                    <label class="block text-xs font-extrabold text-burgundy-900">اختاري الباقة المناسبة لكِ:</label>
+                    <div class="grid grid-cols-1 gap-2">
+                        <label onclick="setBundleQty(1)" class="flex items-center justify-between p-3 rounded-xl border cursor-pointer transition ${selectedBundleQty === 1 ? 'border-burgundy-900 bg-white shadow-xs' : 'border-stone-200 bg-white/75'}">
+                            <div class="flex items-center gap-2.5">
+                                <input type="radio" name="bundle" ${selectedBundleQty === 1 ? 'checked' : ''} class="accent-burgundy-900">
+                                <span class="text-xs font-bold text-stone-800">طقم واحد (1 قطعة)</span>
+                            </div>
+                            <span class="text-xs sm:text-sm font-extrabold text-burgundy-900">${model.price.toLocaleString()} دج</span>
+                        </label>
+                        <label onclick="setBundleQty(2)" class="flex items-center justify-between p-3 rounded-xl border cursor-pointer transition ${selectedBundleQty === 2 ? 'border-burgundy-900 bg-white shadow-xs' : 'border-stone-200 bg-white/75'}">
+                            <div class="flex items-center gap-2.5">
+                                <input type="radio" name="bundle" ${selectedBundleQty === 2 ? 'checked' : ''} class="accent-burgundy-900">
+                                <span class="text-xs font-bold text-stone-800">طقمين (2 قطع)</span>
+                            </div>
+                            <span class="text-xs sm:text-sm font-extrabold text-burgundy-900">${model.bundle2Price.toLocaleString()} دج</span>
+                        </label>
+                        <label onclick="setBundleQty(3)" class="flex items-center justify-between p-3 rounded-xl border cursor-pointer transition ${selectedBundleQty === 3 ? 'border-burgundy-900 bg-white shadow-xs' : 'border-stone-200 bg-white/75'}">
+                            <div class="flex items-center gap-2.5">
+                                <input type="radio" name="bundle" ${selectedBundleQty === 3 ? 'checked' : ''} class="accent-burgundy-900">
+                                <span class="text-xs font-bold text-stone-800">3 أطقم (3 قطع)</span>
+                            </div>
+                            <span class="text-xs sm:text-sm font-extrabold text-burgundy-900">${model.bundle3Price.toLocaleString()} دج</span>
+                        </label>
+                    </div>
+                    ${multiPieceColorSelectors}
+                </div>
+            `;
+
+            const communesOptions = BOUIRA_COMMUNES.map(c => `<option value="${c}">${c}</option>`).join('');
+            const finalTotal = calculateCurrentTotal(model);
+
+            document.getElementById('sticky-mobile-price').textContent = `${finalTotal.toLocaleString()} دج`;
+
+            document.getElementById('product-hero-card').innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-12">
+                    <div class="lg:col-span-6 border-b lg:border-b-0 lg:border-l border-dusty/20 flex flex-col">
+                        ${galleryHTML}
+                    </div>
+
+                    <div class="lg:col-span-6 p-5 sm:p-8 flex flex-col justify-between bg-white">
+                        <div>
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="inline-flex items-center gap-1.5 bg-amber-50 border border-gold-400/50 text-gold-600 px-3 py-1 rounded-full text-xs font-extrabold">
+                                    <i class="fa-solid fa-sparkles"></i>
+                                    <span>${model.badge}</span>
+                                </div>
+                                <button type="button" onclick="openCompareModal()" class="text-xs font-extrabold text-burgundy-900 bg-blush hover:bg-dusty/20 px-3 py-1.5 rounded-full border border-dusty/30 transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-table-cells-large text-gold-600"></i>
+                                    <span>مقارنة الألوان جنباً إلى جنب</span>
+                                </button>
+                            </div>
+
+                            <h1 class="text-2xl sm:text-3xl font-extrabold text-burgundy-900 leading-snug mb-2">${model.name}</h1>
+
+                            <div class="flex flex-wrap items-center gap-3 mb-4">
+                                <span class="text-2xl sm:text-3xl font-black text-burgundy-900">${model.price.toLocaleString()} دج</span>
+                                <span class="bg-blush text-burgundy-900 border border-dusty/30 text-xs font-bold px-2.5 py-1 rounded-lg">التوصيل: مجاني (0 دج) 🚚</span>
+                                <span class="mr-auto text-xs font-bold px-2.5 py-1 rounded-lg ${stock > 0 ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-700'}">
+                                    ${stock > 0 ? `متوفر (${stock} قطع)` : 'نفدت الكمية'}
+                                </span>
+                            </div>
+
+                            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed mb-5">${model.description}</p>
+
+                            <div class="mb-5">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs sm:text-sm font-extrabold text-burgundy-900">1. اختاري اللون (${model.colors.length} ألوان):</span>
+                                    <span class="text-xs text-stone-500">المقاس: <strong class="text-burgundy-900">حجم عام وموحد</strong></span>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    ${swatchesHTML}
+                                </div>
+                            </div>
+
+                            <form id="order-form-box" onsubmit="handleOrderSubmit(event, 'messenger')" class="pearl-blush-grad p-4 sm:p-5 rounded-2xl border border-dusty/30 space-y-3.5">
+                                <div class="flex items-center justify-between border-b border-dusty/20 pb-2.5">
+                                    <span class="text-xs sm:text-sm font-extrabold text-burgundy-900 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-truck text-gold-600"></i>
+                                        <span>2. معلومات التوصيل (ولاية البويرة)</span>
+                                    </span>
+                                    <span class="text-[11px] font-extrabold bg-white text-burgundy-900 px-2.5 py-0.5 rounded-full border border-dusty/20">10 - البويرة (45 بلدية)</span>
+                                </div>
+
+                                ${bundlesHTML}
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs font-bold text-stone-700 mb-1">الاسم الكامل *</label>
+                                        <input type="text" id="order-cust-name" required placeholder="الاسم واللقب" class="w-full p-2.5 rounded-xl bg-white border border-dusty/30 text-sm focus:border-burgundy-900 focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-stone-700 mb-1">رقم الهاتف *</label>
+                                        <input type="tel" id="order-cust-phone" required placeholder="05XXXXXXXX" class="w-full p-2.5 rounded-xl bg-white border border-dusty/30 text-sm focus:border-burgundy-900 focus:outline-none text-left" dir="ltr">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs font-bold text-stone-700 mb-1">البلدية (ولاية البويرة) *</label>
+                                        <select id="order-cust-commune" class="w-full p-2.5 rounded-xl bg-white border border-dusty/30 text-sm focus:border-burgundy-900 focus:outline-none">
+                                            ${communesOptions}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-stone-700 mb-1">العنوان أو الحي *</label>
+                                        <input type="text" id="order-cust-address" required placeholder="مثال: حي 140 مسكن / وسط المدينة" class="w-full p-2.5 rounded-xl bg-white border border-dusty/30 text-sm focus:border-burgundy-900 focus:outline-none">
+                                    </div>
+                                </div>
+
+                                <div class="bg-white/95 p-3 rounded-xl border border-dusty/25 flex items-center justify-between">
+                                    <div class="text-xs text-stone-600">
+                                        <div>التوصيل: <strong class="text-emerald-700">مجاني (0 دج)</strong></div>
+                                        <div class="text-[11px] text-stone-400">الدفع نقداً عند الاستلام بعد المعاينة</div>
+                                    </div>
+                                    <div class="text-left">
+                                        <span class="text-[11px] text-stone-500 block">المجموع النهائي:</span>
+                                        <span class="text-lg sm:text-xl font-black text-burgundy-900">${finalTotal.toLocaleString()} دج</span>
+                                    </div>
+                                </div>
+
+                                <!-- أزرار تأكيد الطلب عبر ماسنجر فيسبوك أو واتساب -->
+                                <div class="space-y-2.5 pt-1">
+                                    <button type="submit" ${stock <= 0 ? 'disabled' : ''} 
+                                        class="w-full py-3.5 rounded-xl font-extrabold text-sm sm:text-base text-white shadow-lg transition flex items-center justify-center gap-2
+                                        ${stock > 0 ? 'messenger-grad pulse-order hover:opacity-95 cursor-pointer' : 'bg-stone-400 cursor-not-allowed'}">
+                                        <i class="fa-brands fa-facebook-messenger text-lg"></i>
+                                        <span>${stock > 0 ? 'تأكيد الطلب عبر ماسنجر (Messenger)' : 'نفدت الكمية لهذا اللون'}</span>
+                                    </button>
+
+                                    <button type="button" onclick="handleOrderSubmit(event, 'whatsapp')" ${stock <= 0 ? 'disabled' : ''} 
+                                        class="w-full py-3 rounded-xl font-extrabold text-xs sm:text-sm text-white shadow-sm transition flex items-center justify-center gap-2
+                                        ${stock > 0 ? 'bg-[#25D366] hover:bg-[#1ebe5d] cursor-pointer' : 'bg-stone-300 cursor-not-allowed'}">
+                                        <i class="fa-brands fa-whatsapp text-base"></i>
+                                        <span>أو تأكيد الطلب عبر واتساب (WhatsApp)</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectModel(modelId) {
+            activeModelId = modelId;
+            const m = appState.models.find(x => x.id === modelId);
+            if (m && m.colors.length > 0) {
+                const avail = m.colors.find(c => c.stock > 0) || m.colors[0];
+                activeColorId = avail.id;
+                syncBundleColorSelections(m);
+            }
+            activePhotoIndex = 0;
+            selectedBundleQty = 1;
+            renderStorefront();
+        }
+
+        function selectColor(colorId) {
+            activeColorId = colorId;
+            activePhotoIndex = 0;
+            bundleColorSelections[0] = colorId;
+            renderStorefront();
+        }
+
+        function selectPhotoIndex(idx) {
+            activePhotoIndex = idx;
+            renderStorefront();
+        }
+
+        function setBundleQty(qty) {
+            selectedBundleQty = qty;
+            renderStorefront();
+        }
+
+        function setBundlePieceColor(pieceIdx, colorId) {
+            bundleColorSelections[pieceIdx] = colorId;
+            if (pieceIdx === 0) {
+                activeColorId = colorId;
+                activePhotoIndex = 0;
+                renderStorefront();
+            }
+        }
+
+        function calculateCurrentTotal(model) {
+            if (selectedBundleQty === 1) return model.price;
+            if (selectedBundleQty === 2) return model.bundle2Price;
+            if (selectedBundleQty === 3) return model.bundle3Price;
+            return model.price * selectedBundleQty;
+        }
+
+        function openCompareModal() {
+            const model = appState.models.find(m => m.id === activeModelId) || appState.models[0];
+            const grid = document.getElementById('compare-colors-grid');
+            grid.innerHTML = model.colors.map(col => {
+                const thumb = col.images && col.images.length > 0 ? col.images[0] : '';
+                return `
+                    <div onclick="selectColorFromCompare('${col.id}')" class="bg-pearl rounded-2xl border border-dusty/25 overflow-hidden cursor-pointer hover:border-burgundy-900 hover:shadow-md transition flex flex-col">
+                        <div class="h-36 bg-blush flex items-center justify-center overflow-hidden p-2">
+                            ${thumb 
+                                ? `<img src="${thumb}" class="w-full h-full object-cover rounded-xl">`
+                                : getFallbackPrayerSetSVG(col.hex, col.accent, "w-24 h-28")}
+                        </div>
+                        <div class="p-3 text-center bg-white border-t border-dusty/15">
+                            <div class="flex items-center justify-center gap-1.5 mb-1">
+                                <span class="w-3 h-3 rounded-full border border-stone-300" style="background:${col.hex}"></span>
+                                <span class="text-xs font-extrabold text-burgundy-900">${col.name}</span>
+                            </div>
+                            <span class="text-[10px] font-bold ${col.stock > 0 ? 'text-emerald-700' : 'text-red-600'}">
+                                ${col.stock > 0 ? 'متوفر للطلب' : 'نفدت الكمية'}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('compare-colors-modal').classList.remove('hidden');
+            document.getElementById('compare-colors-modal').classList.add('flex');
+        }
+
+        function closeCompareModal() {
+            document.getElementById('compare-colors-modal').classList.add('hidden');
+            document.getElementById('compare-colors-modal').classList.remove('flex');
+        }
+
+        function selectColorFromCompare(colorId) {
+            closeCompareModal();
+            selectColor(colorId);
+        }
+
+        function openLightbox(src, caption) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').textContent = caption;
+            document.getElementById('lightbox-modal').classList.remove('hidden');
+            document.getElementById('lightbox-modal').classList.add('flex');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox-modal').classList.add('hidden');
+            document.getElementById('lightbox-modal').classList.remove('flex');
+        }
+
+        function toggleFaq(idx) {
+            const body = document.getElementById(`faq-body-${idx}`);
+            const icon = document.getElementById(`faq-icon-${idx}`);
+            const isHidden = body.classList.contains('hidden');
+            body.classList.toggle('hidden');
+            icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        function copyLastOrderMessage() {
+            if (!lastFormattedOrderText) return;
+            copyTextSafe(lastFormattedOrderText);
+            showToast('تم نسخ تفاصيل طلبك! الصقيه الآن في محادثة ماسنجر وأرسليه', 'messenger');
+        }
+
+        function handleOrderSubmit(e, channel = 'messenger') {
+            if (e) e.preventDefault();
+            const form = document.getElementById('order-form-box');
+            if (form && !form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const name = document.getElementById('order-cust-name').value.trim();
+            const phone = document.getElementById('order-cust-phone').value.trim();
+            const commune = document.getElementById('order-cust-commune').value;
+            const address = document.getElementById('order-cust-address').value.trim();
+
+            if (!name || !phone || !address) {
+                showToast('يرجى ملء الاسم ورقم الهاتف والعنوان أولاً', 'error');
+                return;
+            }
+
+            const model = appState.models.find(m => m.id === activeModelId);
+            const chosenColorIds = selectedBundleQty === 1 
+                ? [activeColorId] 
+                : bundleColorSelections.slice(0, selectedBundleQty);
+
+            const colorCounts = {};
+            chosenColorIds.forEach(cid => colorCounts[cid] = (colorCounts[cid] || 0) + 1);
+
+            for (const [cid, reqQty] of Object.entries(colorCounts)) {
+                const cObj = model.colors.find(c => c.id === cid);
+                if (!cObj || cObj.stock < reqQty) {
+                    showToast(`عذراً، الكمية المتوفرة من اللون "${cObj ? cObj.name : ''}" غير كافية.`, 'error');
+                    return;
+                }
+            }
+
+            const chosenColorNames = [];
+            chosenColorIds.forEach(cid => {
+                const cObj = model.colors.find(c => c.id === cid);
+                cObj.stock -= 1;
+                chosenColorNames.push(cObj.name);
+            });
+
+            const total = calculateCurrentTotal(model);
+            const colorsSummary = chosenColorNames.join(' + ');
+
+            const orderNum = 'DR-' + Math.floor(1000 + Math.random() * 9000);
+            const newOrder = {
+                id: orderNum,
+                date: new Date().toLocaleDateString('ar-DZ'),
+                customerName: name,
+                phone: phone,
+                commune: commune,
+                address: address,
+                modelName: model.name,
+                colorName: colorsSummary,
+                quantity: selectedBundleQty,
+                total: total,
+                status: 'جديد'
+            };
+
+            appState.orders.unshift(newOrder);
+            persistState();
+
+            document.getElementById('confirm-order-num').textContent = `#${orderNum}`;
+            document.getElementById('confirm-order-details').innerHTML = `
+                <div><strong>الموديل:</strong> ${model.name}</div>
+                <div><strong>الألوان المختارة:</strong> ${colorsSummary} (حجم عام)</div>
+                <div><strong>الكمية:</strong> ${selectedBundleQty} ${selectedBundleQty === 1 ? 'طقم' : 'أطقم'}</div>
+                <div><strong>التوصيل:</strong> ولاية البويرة — بلدية ${commune} (${address})</div>
+                <div class="pt-1.5 border-t border-dusty/20 font-extrabold text-burgundy-900">المجموع عند الاستلام: ${total.toLocaleString()} دج (توصيل مجاني)</div>
+            `;
+
+            lastFormattedOrderText =
+                `السلام عليكم متجر دُرَّةٌ | DURRA 🌙\n` +
+                `طلب جديد رقم: #${orderNum}\n` +
+                `• الموديل: ${model.name}\n` +
+                `• الألوان: ${colorsSummary} (حجم عام)\n` +
+                `• الكمية: ${selectedBundleQty}\n` +
+                `• الاسم: ${name}\n` +
+                `• الهاتف: ${phone}\n` +
+                `• العنوان (البويرة): بلدية ${commune} - ${address}\n` +
+                `• المجموع: ${total.toLocaleString()} دج (توصيل مجاني)`;
+
+            const encodedMsg = encodeURIComponent(lastFormattedOrderText);
+            const waUrl = `https://wa.me/${formatAlgerianWhatsApp(appState.config.whatsapp)}?text=${encodedMsg}`;
+            const msgUsername = extractMessengerUsername(appState.config.messengerUsername);
+            const messengerUrl = `https://m.me/${msgUsername}?text=${encodedMsg}`;
+
+            document.getElementById('confirm-wa-btn').href = waUrl;
+            document.getElementById('confirm-messenger-btn').href = messengerUrl;
+
+            document.getElementById('success-modal').classList.remove('hidden');
+            document.getElementById('success-modal').classList.add('flex');
+
+            if (channel === 'messenger') {
+                copyTextSafe(lastFormattedOrderText);
+                showToast('تم نسخ تفاصيل طلبك! الصقيه الآن في محادثة ماسنجر وأرسليه', 'messenger');
+                window.open(messengerUrl, '_blank');
+            } else {
+                window.open(waUrl, '_blank');
+            }
+
+            selectedBundleQty = 1;
+            syncBundleColorSelections(model);
+            renderStorefront();
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+            document.getElementById('success-modal').classList.remove('flex');
+        }
+
+        // =====================================================================
+        // دوال لوحة الإدارة (ADMIN DASHBOARD)
+        // =====================================================================
+        function updateOrdersCounter() {
+            const tabBadge = document.getElementById('admin-tab-orders-badge');
+            if (tabBadge) tabBadge.textContent = appState.orders.length;
+        }
+
+        function switchAdminTab(tab) {
+            ['orders', 'models', 'settings'].forEach(t => {
+                document.getElementById(`admin-panel-${t}`).classList.add('hidden');
+                const btn = document.getElementById(`admin-tab-${t}`);
+                btn.classList.remove('border-burgundy-900', 'text-burgundy-900', 'font-extrabold');
+                btn.classList.add('border-transparent', 'text-stone-500', 'font-bold');
+            });
+            document.getElementById(`admin-panel-${tab}`).classList.remove('hidden');
+            const active = document.getElementById(`admin-tab-${tab}`);
+            active.classList.add('border-burgundy-900', 'text-burgundy-900', 'font-extrabold');
+            active.classList.remove('border-transparent', 'text-stone-500', 'font-bold');
+
+            if (tab === 'orders') renderAdminOrders();
+        }
+
+        function renderAdminDashboard() {
+            let totalStock = 0;
+            appState.models.forEach(m => m.colors.forEach(c => totalStock += c.stock));
+            const totalRev = appState.orders.filter(o => o.status !== 'ملغى').reduce((s, o) => s + o.total, 0);
+
+            document.getElementById('admin-stat-models').textContent = appState.models.length;
+            document.getElementById('admin-stat-stock').textContent = totalStock;
+            document.getElementById('admin-stat-orders').textContent = appState.orders.length;
+            document.getElementById('admin-stat-revenue').textContent = `${totalRev.toLocaleString()} دج`;
+
+            const container = document.getElementById('admin-panel-models');
+            container.innerHTML = appState.models.map(m => {
+                const mStock = m.colors.reduce((s, c) => s + c.stock, 0);
+                const firstImgCol = m.colors.find(c => c.images && c.images.length > 0);
+                const thumb = firstImgCol ? firstImgCol.images[0] : '';
+
+                const colorsGrid = m.colors.map(col => {
+                    const imgCount = col.images ? col.images.length : 0;
+                    return `
+                        <div class="flex items-center justify-between p-3 rounded-2xl bg-pearl border border-dusty/20">
+                            <div class="flex items-center gap-2.5">
+                                ${imgCount > 0 
+                                    ? `<img src="${col.images[0]}" class="w-10 h-10 rounded-xl object-cover border border-stone-300">`
+                                    : `<span class="w-8 h-8 rounded-full border border-stone-300 shrink-0" style="background:${col.hex}"></span>`
+                                }
+                                <div>
+                                    <div class="text-xs font-extrabold text-burgundy-900">${col.name}</div>
+                                    <div class="text-[10px] font-bold ${imgCount > 0 ? 'text-emerald-700' : 'text-stone-400'}">
+                                        ${imgCount > 0 ? `${imgCount} صور مرفوعة ✓` : 'بدون صور (رسم افتراضي)'}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <button onclick="adjustColorStock('${m.id}', '${col.id}', -1)" class="w-7 h-7 rounded-lg bg-white border border-stone-300 hover:bg-red-50 hover:text-red-600 font-bold">-</button>
+                                <input type="number" min="0" value="${col.stock}" onchange="directSetColorStock('${m.id}', '${col.id}', this.value)" class="w-11 text-center p-1 rounded-lg border border-stone-300 bg-white text-xs font-extrabold text-burgundy-900">
+                                <button onclick="adjustColorStock('${m.id}', '${col.id}', 1)" class="w-7 h-7 rounded-lg bg-white border border-stone-300 hover:bg-emerald-50 hover:text-emerald-700 font-bold">+</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-dusty/20 luxury-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 mb-4 border-b border-stone-100">
+                            <div class="flex items-center gap-3.5">
+                                ${thumb 
+                                    ? `<img src="${thumb}" class="w-16 h-16 rounded-2xl object-cover border border-dusty/30 shrink-0">`
+                                    : `<div class="w-16 h-16 rounded-2xl bg-blush text-burgundy-900 flex items-center justify-center font-serif font-bold text-xl shrink-0">دُرَّةٌ</div>`
+                                }
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2">
+                                        <h3 class="text-base sm:text-lg font-extrabold text-burgundy-900">${m.name}</h3>
+                                        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${m.active ? 'bg-emerald-50 text-emerald-800' : 'bg-stone-100 text-stone-500'}">
+                                            ${m.active ? 'نشط' : 'مخفي'}
+                                        </span>
+                                        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blush text-burgundy-900">المخزون: ${mStock}</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-gold-600 font-bold mt-0.5">
+                                        1 طقم: ${m.price.toLocaleString()} دج • 2 أطقم: ${m.bundle2Price.toLocaleString()} دج • 3 أطقم: ${m.bundle3Price.toLocaleString()} دج
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="openModelModal('${m.id}')" class="px-4 py-2.5 rounded-xl burgundy-grad text-white text-xs font-extrabold shadow-xs hover:opacity-95 transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-camera"></i> تعديل الموديل ورفع صور الألوان
+                                </button>
+                                ${appState.models.length > 1 ? `
+                                <button onclick="deleteModel('${m.id}')" class="px-3 py-2.5 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 text-xs font-bold transition" title="حذف الموديل">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>` : ''}
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                            ${colorsGrid}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            renderAdminOrders();
+        }
+
+        function adjustColorStock(modelId, colorId, delta) {
+            const m = appState.models.find(x => x.id === modelId);
+            const c = m.colors.find(x => x.id === colorId);
+            if (!c) return;
+            c.stock = Math.max(0, c.stock + delta);
+            persistState();
+            renderAdminDashboard();
+        }
+
+        function directSetColorStock(modelId, colorId, val) {
+            const m = appState.models.find(x => x.id === modelId);
+            const c = m.colors.find(x => x.id === colorId);
+            if (!c) return;
+            c.stock = Math.max(0, parseInt(val, 10) || 0);
+            persistState();
+            renderAdminDashboard();
+            showToast('تم تحديث المخزون');
+        }
+
+        function openModelModal(modelId = null) {
+            const modal = document.getElementById('model-modal');
+            const title = document.getElementById('model-modal-title');
+            
+            if (modelId) {
+                const m = appState.models.find(x => x.id === modelId);
+                title.textContent = 'تعديل الموديل ورفع صور الألوان';
+                document.getElementById('form-model-id').value = m.id;
+                document.getElementById('form-model-active').checked = m.active;
+                document.getElementById('form-model-name').value = m.name;
+                document.getElementById('form-model-price').value = m.price;
+                document.getElementById('form-bundle-2').value = m.bundle2Price || 3700;
+                document.getElementById('form-bundle-3').value = m.bundle3Price || 5400;
+                document.getElementById('form-model-badge').value = m.badge || '';
+                document.getElementById('form-model-desc').value = m.description;
+                tempModalColors = JSON.parse(JSON.stringify(m.colors));
+            } else {
+                title.textContent = 'إضافة موديل جديد';
+                document.getElementById('form-model-id').value = '';
+                document.getElementById('form-model-active').checked = true;
+                document.getElementById('form-model-name').value = '';
+                document.getElementById('form-model-price').value = '2000';
+                document.getElementById('form-bundle-2').value = '3700';
+                document.getElementById('form-bundle-3').value = '5400';
+                document.getElementById('form-model-badge').value = 'حجم عام وموحد • بدون قياسات';
+                document.getElementById('form-model-desc').value = 'طقم صلاة فاخر مكون من خمار طويل فضفاض وتنورة واسعة بخصر مطاطي مرن يناسب جميع المقاسات.';
+                tempModalColors = JSON.parse(JSON.stringify(DEFAULT_COLORS));
+            }
+
+            renderModalColorsList();
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModelModal() {
+            document.getElementById('model-modal').classList.add('hidden');
+            document.getElementById('model-modal').classList.remove('flex');
+        }
+
+        function renderModalColorsList() {
+            const container = document.getElementById('modal-colors-container');
+            container.innerHTML = tempModalColors.map((col, idx) => {
+                const imgs = Array.isArray(col.images) ? col.images : [];
+                const thumbsHTML = imgs.map((src, imgIdx) => `
+                    <div class="relative w-14 h-14 rounded-xl overflow-hidden border border-dusty/40 shrink-0 group">
+                        <img src="${src}" class="w-full h-full object-cover">
+                        <button type="button" onclick="removeColorPhoto(${idx}, ${imgIdx})" 
+                            class="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-red-600 text-white text-[10px] flex items-center justify-center shadow hover:bg-red-700" title="حذف الصورة">
+                            ×
+                        </button>
+                    </div>
+                `).join('');
+
+                return `
+                    <div class="p-3.5 rounded-2xl bg-pearl border border-dusty/25 space-y-2.5">
+                        <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
+                            <div class="flex items-center gap-2 flex-1 min-w-[160px]">
+                                <input type="color" value="${col.hex}" onchange="tempModalColors[${idx}].hex = this.value" class="w-7 h-7 rounded cursor-pointer border-0 bg-transparent">
+                                <input type="text" value="${col.name}" onchange="tempModalColors[${idx}].name = this.value" placeholder="اسم اللون" class="w-full p-1.5 rounded-lg border border-stone-300 bg-white text-xs font-extrabold text-burgundy-900">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex items-center gap-1">
+                                    <span class="text-[11px] font-bold text-stone-500">الكمية:</span>
+                                    <input type="number" min="0" value="${col.stock}" onchange="tempModalColors[${idx}].stock = parseInt(this.value,10)||0" class="w-12 p-1 rounded-lg border border-stone-300 bg-white text-center text-xs font-bold">
+                                </div>
+                                ${tempModalColors.length > 1 ? `
+                                <button type="button" onclick="removeColorRowFromModal(${idx})" class="text-red-500 hover:text-red-700 p-1 text-xs" title="حذف اللون">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>` : ''}
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar pt-1">
+                            <label class="w-14 h-14 rounded-xl border-2 border-dashed border-burgundy-900/40 bg-white hover:bg-blush text-burgundy-900 flex flex-col items-center justify-center cursor-pointer shrink-0 transition" title="إضافة صور لهذا اللون">
+                                <i class="fa-solid fa-camera text-sm"></i>
+                                <span class="text-[9px] font-extrabold mt-0.5">+ صور</span>
+                                <input type="file" multiple accept="image/*" onchange="handleMultipleColorImagesUpload(event, ${idx})" class="hidden">
+                            </label>
+                            ${thumbsHTML}
+                            ${imgs.length === 0 ? `<span class="text-[11px] text-stone-400">اضغطي على (+ صور) لرفع صورة أو عدة صور لهذا اللون من هاتفك</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function handleMultipleColorImagesUpload(event, colorIdx) {
+            const files = Array.from(event.target.files || []);
+            if (files.length === 0) return;
+
+            if (!Array.isArray(tempModalColors[colorIdx].images)) {
+                tempModalColors[colorIdx].images = [];
+            }
+
+            let addedCount = 0;
+            for (const file of files) {
+                try {
+                    const compressed = await compressImageFile(file, 800, 0.78);
+                    tempModalColors[colorIdx].images.push(compressed);
+                    addedCount++;
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+
+            if (addedCount > 0) {
+                renderModalColorsList();
+                showToast(`تمت إضافة ${addedCount} ${addedCount === 1 ? 'صورة' : 'صور'} للون "${tempModalColors[colorIdx].name}"`);
+            }
+        }
+
+        function removeColorPhoto(colorIdx, imgIdx) {
+            tempModalColors[colorIdx].images.splice(imgIdx, 1);
+            renderModalColorsList();
+        }
+
+        function addColorRowToModal() {
+            tempModalColors.push({
+                id: 'col-' + Date.now(),
+                name: 'لون جديد',
+                hex: '#C59B47',
+                accent: '#FCF9F6',
+                stock: 10,
+                images: []
+            });
+            renderModalColorsList();
+        }
+
+        function removeColorRowFromModal(idx) {
+            tempModalColors.splice(idx, 1);
+            renderModalColorsList();
+        }
+
+        function saveModelForm(e) {
+            e.preventDefault();
+            const id = document.getElementById('form-model-id').value;
+            const modelObj = {
+                id: id || 'model-' + Date.now(),
+                active: document.getElementById('form-model-active').checked,
+                name: document.getElementById('form-model-name').value.trim(),
+                price: parseInt(document.getElementById('form-model-price').value, 10),
+                bundle2Price: parseInt(document.getElementById('form-bundle-2').value, 10) || 3700,
+                bundle3Price: parseInt(document.getElementById('form-bundle-3').value, 10) || 5400,
+                badge: document.getElementById('form-model-badge').value.trim(),
+                description: document.getElementById('form-model-desc').value.trim(),
+                colors: tempModalColors
+            };
+
+            if (id) {
+                const idx = appState.models.findIndex(m => m.id === id);
+                if (idx !== -1) appState.models[idx] = modelObj;
+                showToast('تم حفظ تعديلات الموديل وصور الألوان بنجاح');
+            } else {
+                appState.models.push(modelObj);
+                activeModelId = modelObj.id;
+                activeColorId = modelObj.colors[0].id;
+                showToast('تمت إضافة الموديل الجديد إلى المتجر!');
+            }
+
+            persistState();
+            closeModelModal();
+            renderAdminDashboard();
+        }
+
+        function deleteModel(id) {
+            if (appState.models.length <= 1) return;
+            appState.models = appState.models.filter(m => m.id !== id);
+            if (activeModelId === id) activeModelId = appState.models[0].id;
+            persistState();
+            renderAdminDashboard();
+            showToast('تم حذف الموديل');
+        }
+
+        function renderAdminOrders() {
+            const filter = document.getElementById('order-status-filter').value;
+            const tbody = document.getElementById('admin-orders-tbody');
+            const noOrders = document.getElementById('admin-no-orders');
+
+            const filtered = filter === 'all' ? appState.orders : appState.orders.filter(o => o.status === filter);
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                noOrders.classList.remove('hidden');
+                return;
+            }
+            noOrders.classList.add('hidden');
+
+            tbody.innerHTML = filtered.map(ord => {
+                let badgeClass = 'bg-amber-100 text-amber-800';
+                if (ord.status === 'تم التأكيد') badgeClass = 'bg-blue-100 text-blue-800';
+                if (ord.status === 'قيد التوصيل') badgeClass = 'bg-purple-100 text-purple-800';
+                if (ord.status === 'مكتمل') badgeClass = 'bg-emerald-100 text-emerald-800';
+                if (ord.status === 'ملغى') badgeClass = 'bg-red-100 text-red-800';
+
+                const cleanPhone = formatAlgerianWhatsApp(ord.phone);
+                const waFollowUp = encodeURIComponent(`مرحباً ${ord.customerName}، معك متجر دُرَّةٌ | DURRA بخصوص طلبك رقم #${ord.id} (${ord.modelName} - ${ord.colorName}) للتوصيل المجاني إلى بلدية ${ord.commune}.`);
+
+                return `
+                    <tr class="hover:bg-pearl/70">
+                        <td class="p-3.5 font-extrabold text-burgundy-900">#${ord.id}<div class="text-[10px] text-stone-400 font-normal">${ord.date}</div></td>
+                        <td class="p-3.5"><div class="font-bold text-stone-800">${ord.customerName}</div><div class="text-xs text-burgundy-800 font-bold" dir="ltr">${ord.phone}</div></td>
+                        <td class="p-3.5 text-xs"><div class="font-bold">البويرة — ${ord.commune}</div><div class="text-stone-500">${ord.address}</div></td>
+                        <td class="p-3.5 text-xs"><div class="font-bold">${ord.modelName}</div><div class="text-gold-600 font-extrabold">${ord.colorName} (${ord.quantity})</div></td>
+                        <td class="p-3.5 font-black text-burgundy-900">${ord.total.toLocaleString()} دج</td>
+                        <td class="p-3.5">
+                            <select onchange="updateOrderStatus('${ord.id}', this.value)" class="text-xs font-bold px-2.5 py-1.5 rounded-lg border border-stone-200 ${badgeClass} focus:outline-none">
+                                <option value="جديد" ${ord.status === 'جديد' ? 'selected' : ''}>جديد</option>
+                                <option value="تم التأكيد" ${ord.status === 'تم التأكيد' ? 'selected' : ''}>تم التأكيد</option>
+                                <option value="قيد التوصيل" ${ord.status === 'قيد التوصيل' ? 'selected' : ''}>قيد التوصيل</option>
+                                <option value="مكتمل" ${ord.status === 'مكتمل' ? 'selected' : ''}>مكتمل</option>
+                                <option value="ملغى" ${ord.status === 'ملغى' ? 'selected' : ''}>ملغى</option>
+                            </select>
+                        </td>
+                        <td class="p-3.5">
+                            <div class="flex items-center gap-2">
+                                <a href="tel:${ord.phone}" class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center hover:bg-blue-100" title="اتصال هاتفي">
+                                    <i class="fa-solid fa-phone text-xs"></i>
+                                </a>
+                                <a href="https://wa.me/${cleanPhone}?text=${waFollowUp}" target="_blank" class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center hover:bg-emerald-100" title="مراسلة واتساب">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                                </a>
+                                <button onclick="deleteOrderRecord('${ord.id}')" class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center hover:bg-red-100" title="حذف">
+                                    <i class="fa-solid fa-trash text-xs"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function updateOrderStatus(id, status) {
+            const o = appState.orders.find(x => x.id === id);
+            if (o) {
+                o.status = status;
+                persistState();
+                renderAdminDashboard();
+                showToast(`تم تحديث حالة الطلب #${id}`);
+            }
+        }
+
+        function deleteOrderRecord(id) {
+            appState.orders = appState.orders.filter(x => x.id !== id);
+            persistState();
+            renderAdminDashboard();
+            showToast('تم حذف الطلب');
+        }
+
+        function exportOrdersCSV() {
+            if (appState.orders.length === 0) {
+                showToast('لا توجد طلبات لتصديرها حالياً', 'error');
+                return;
+            }
+            const headers = ['رقم الطلب', 'التاريخ', 'اسم الزبون', 'الهاتف', 'البلدية (البويرة)', 'العنوان', 'الموديل', 'الألوان', 'الكمية', 'المبلغ (دج)', 'الحالة'];
+            const rows = appState.orders.map(o => [o.id, o.date, o.customerName, o.phone, o.commune, o.address, o.modelName, o.colorName, o.quantity, o.total, o.status]);
+            const csvContent = '\uFEFF' + [headers, ...rows].map(e => e.join(',')).join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `طلبات_متجر_درة_${new Date().toISOString().slice(0,10)}.csv`;
+            a.click();
+        }
+
+        function saveStoreConfig() {
+            appState.config.messengerUsername = extractMessengerUsername(document.getElementById('cfg-messenger').value);
+            appState.config.whatsapp = document.getElementById('cfg-whatsapp').value.trim() || '0554684983';
+            appState.config.phone = document.getElementById('cfg-phone').value.trim() || appState.config.whatsapp;
+            
+            const newPin = document.getElementById('cfg-admin-pin').value.trim();
+            if (newPin && newPin.length >= 4) {
+                appState.config.adminPin = newPin;
+            }
+            appState.config.announcement = document.getElementById('cfg-announcement').value.trim();
+            appState.config.socialProof = document.getElementById('cfg-social-proof').checked;
+            
+            persistState();
+            applyConfigToUI();
+            showToast('تم حفظ بيانات ماسنجر والواتساب وإعدادات المتجر بنجاح!');
+        }
+
+        function exportStoreJSON() {
+            const dataStr = JSON.stringify(appState, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `نسخة_احتياطية_درة_${new Date().toISOString().slice(0,10)}.json`;
+            a.click();
+            showToast('تم تصدير النسخة الاحتياطية الكاملة للمتجر');
+        }
+
+        function importStoreJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed && parsed.models) {
+                        appState = parsed;
+                        activeModelId = appState.models[0].id;
+                        persistState();
+                        renderBrandLogos();
+                        applyConfigToUI();
+                        renderAdminDashboard();
+                        showToast('تم استيراد بيانات وصور المتجر بنجاح!');
+                    } else {
+                        showToast('ملف غير صالح', 'error');
+                    }
+                } catch (err) {
+                    showToast('تعذر قراءة الملف', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function resetToFactoryDefaults() {
+            localStorage.removeItem('durra_luxury_store_v7');
+            appState = {
+                models: JSON.parse(JSON.stringify(INITIAL_MODELS)),
+                orders: [],
+                config: {
+                    messengerUsername: 'durra.bouira',
+                    whatsapp: '0554684983',
+                    phone: '0554684983',
+                    adminPin: '2026',
+                    announcement: '✨ توصيل مجاني 100% إلى باب المنزل في كامل ولاية البويرة (45 بلدية) • الدفع عند الاستلام بعد المعاينة ✨',
+                    socialProof: true,
+                    customLogo: ''
+                }
+            };
+            activeModelId = appState.models[0].id;
+            activeColorId = appState.models[0].colors[0].id;
+            activePhotoIndex = 0;
+            persistState();
+            renderBrandLogos();
+            applyConfigToUI();
+            renderAdminDashboard();
+            showToast('تمت إعادة ضبط المتجر بنجاح');
+        }
+
+        window.onload = initStore;
+    </script>
+</body>
+</html>
