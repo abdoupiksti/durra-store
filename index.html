@@ -54,6 +54,20 @@
         .burgundy-grad {
             background: linear-gradient(135deg, #6E223A 0%, #5B1A2E 100%);
         }
+        /* أنماط الخطوط للمعاينة */
+        body.f-tajawal, body.f-tajawal button, body.f-tajawal input, body.f-tajawal select, body.f-tajawal textarea { font-family: 'Tajawal', sans-serif !important; }
+        body.f-classic, body.f-classic button, body.f-classic input, body.f-classic select, body.f-classic textarea { font-family: 'Almarai', sans-serif !important; }
+        body.f-classic h1, body.f-classic h2, body.f-classic h3 { font-family: 'Amiri', serif !important; font-weight: 700; }
+        body.f-plex, body.f-plex button, body.f-plex input, body.f-plex select, body.f-plex textarea { font-family: 'IBM Plex Sans Arabic', sans-serif !important; }
+        /* أيقونات خطية بدل الإيموجي */
+        .ic-line { display: none; }
+        body.i-line .ic-emoji { display: none; }
+        body.i-line .ic-line { display: inline-block; }
+        .ic-line svg { width: 22px; height: 22px; stroke: #B8893B; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .cta-orange { background: linear-gradient(135deg,#FF8A1F,#F25C05); color:#fff; box-shadow: 0 6px 16px rgba(242,92,5,.35); }
+        .cta-orange:hover { filter: brightness(1.05); }
+        @keyframes urgentPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .urgent-pulse { animation: urgentPulse 1.6s ease-in-out infinite; }
         .messenger-grad {
             background: linear-gradient(135deg, #00B2FF 0%, #006AFF 100%);
         }
@@ -111,7 +125,7 @@
 
             <!-- أزرار الزبائن فقط (الطلب + استفسار عبر ماسنجر وواتساب) -->
             <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-                <a href="#order-form-box" onclick="if(!document.getElementById('admin-view').classList.contains('hidden')) switchView('store');" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold burgundy-grad text-white shadow-sm hover:opacity-95 transition flex items-center gap-1.5">
+                <a href="#order-form-box" onclick="if(!document.getElementById('admin-view').classList.contains('hidden')) switchView('store');" class="px-3.5 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold cta-orange text-white shadow-sm hover:opacity-95 transition flex items-center gap-1.5">
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span>اطلبي الآن</span>
                 </a>
@@ -602,13 +616,34 @@
         </div>
     </section>
 
+
+    <!-- لوحة معاينة التصميم: تظهر فقط عند فتح الرابط مع ?design=1 -->
+    <div id="design-panel" class="hidden fixed left-3 bottom-24 sm:bottom-6 z-50">
+        <button type="button" onclick="document.getElementById('design-sheet').classList.toggle('hidden')" class="w-12 h-12 rounded-full bg-white shadow-lg border border-stone-300 text-xl">🎨</button>
+        <div id="design-sheet" class="hidden mt-2 bg-white rounded-2xl shadow-2xl border border-stone-200 p-3 w-64 space-y-2">
+            <p class="text-xs font-extrabold text-stone-800">الخط</p>
+            <div class="grid grid-cols-2 gap-1.5 text-[11px] font-bold">
+                <button type="button" onclick="setDesign('f','')" class="p-2 rounded-lg border">1. Cairo (الحالي)</button>
+                <button type="button" onclick="setDesign('f','f-tajawal')" class="p-2 rounded-lg border">2. Tajawal</button>
+                <button type="button" onclick="setDesign('f','f-classic')" class="p-2 rounded-lg border">3. فخم Amiri</button>
+                <button type="button" onclick="setDesign('f','f-plex')" class="p-2 rounded-lg border">4. IBM Plex</button>
+            </div>
+            <p class="text-xs font-extrabold text-stone-800">الأيقونات</p>
+            <div class="grid grid-cols-2 gap-1.5 text-[11px] font-bold">
+                <button type="button" onclick="setDesign('i','')" class="p-2 rounded-lg border">إيموجي</button>
+                <button type="button" onclick="setDesign('i','i-line')" class="p-2 rounded-lg border">خطية ذهبية</button>
+            </div>
+            <p class="text-[10px] text-stone-500 leading-relaxed">اختر ما يعجبك وأخبرني برقم الخط ونوع الأيقونات.</p>
+        </div>
+    </div>
+
     <!-- شريط الطلب السريع الثابت في أسفل شاشة الهاتف -->
     <div id="mobile-sticky-bar" class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-dusty/25 p-3 z-30 sm:hidden flex items-center justify-between gap-3 shadow-lg">
         <div>
             <span id="sticky-mobile-delivery-label" class="text-[10px] text-emerald-700 block font-bold">البويرة: توصيل مجاني</span>
             <span id="sticky-mobile-price" class="text-base font-black text-burgundy-900">2,000 دج</span>
         </div>
-        <a href="#order-form-box" class="flex-1 burgundy-grad text-white py-3 rounded-xl text-xs font-extrabold text-center shadow">
+        <a href="#order-form-box" class="flex-1 cta-orange text-white py-3 rounded-xl text-xs font-extrabold text-center">
             اطلبي الآن (الدفع عند الاستلام)
         </a>
     </div>
@@ -1087,54 +1122,16 @@
             return Math.max(0, parseInt(appState.config.otherWilayasFee, 10) || 0);
         }
 
-        async function initStore() {
-            let saved = null;
-            try { saved = localStorage.getItem('durra_luxury_store_58_v1'); } catch (e) { saved = null; }
-            if (saved) {
-                try {
-                    appState = JSON.parse(saved);
-                } catch (e) {
-                    appState.models = JSON.parse(JSON.stringify(INITIAL_MODELS));
-                }
-            } else {
-                appState.models = JSON.parse(JSON.stringify(INITIAL_MODELS));
-                persistState();
-            }
-
-            // تحميل المنتجات المنشورة من products.json (ما يراه كل الزبائن)
-            // الجهاز الذي فيه تعديلات إدارية غير منشورة (dirty) يحتفظ بنسخته المحلية
-            if (!appState.dirty) {
-                try {
-                    const ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
-                    const tm = ctrl ? setTimeout(() => ctrl.abort(), 6000) : null;
-                    const res = await fetch('products.json?v=' + Date.now(), { cache: 'no-store', signal: ctrl ? ctrl.signal : undefined });
-                    if (tm) clearTimeout(tm);
-                    if (res.ok) {
-                        const remote = await res.json();
-                        if (remote && Array.isArray(remote.models) && remote.models.length) {
-                            appState.models = remote.models;
-                            const keepPin = appState.config && appState.config.adminPin;
-                            appState.config = Object.assign({}, appState.config || {}, remote.config || {});
-                            if (keepPin) appState.config.adminPin = keepPin;
-                        }
-                    }
-                } catch (e) { /* لا يوجد products.json بعد: نستخدم البيانات الافتراضية */ }
-            }
-
+        function normalizeState() {
             if (!appState.models || appState.models.length === 0) {
                 appState.models = JSON.parse(JSON.stringify(INITIAL_MODELS));
             }
-
-            if (appState.config && appState.config.sheetUrl) SHEET_URL = appState.config.sheetUrl;
-            await loadSheetStock();
-
             appState.models.forEach(m => {
                 if (typeof m.active === 'undefined') m.active = true;
                 m.colors.forEach(c => {
                     if (!Array.isArray(c.images)) c.images = c.image ? [c.image] : [];
                 });
             });
-
             if (!appState.config) appState.config = {};
             if (!appState.config.messengerUsername) appState.config.messengerUsername = 'durra.bouira';
             if (!appState.config.whatsapp) appState.config.whatsapp = '0554684983';
@@ -1142,21 +1139,87 @@
             if (!appState.config.deliveryMode) appState.config.deliveryMode = 'fixed';
             if (typeof appState.config.otherWilayasFee === 'undefined') appState.config.otherWilayasFee = 600;
             if (!appState.config.adminPin) appState.config.adminPin = '2026';
+            if (appState.config.sheetUrl) SHEET_URL = appState.config.sheetUrl;
+        }
 
+        function pickActiveModel(keepCurrent) {
             const activeModels = appState.models.filter(m => m.active);
-            const firstModel = activeModels[0] || appState.models[0];
-            activeModelId = firstModel.id;
-            const firstColor = firstModel.colors.find(c => c.stock > 0) || firstModel.colors[0];
-            activeColorId = firstColor ? firstColor.id : null;
-            activePhotoIndex = 0;
-            syncBundleColorSelections(firstModel);
+            let model = keepCurrent ? appState.models.find(m => m.id === activeModelId) : null;
+            if (!model) model = activeModels[0] || appState.models[0];
+            activeModelId = model.id;
+            const keepColor = keepCurrent && model.colors.find(c => c.id === activeColorId);
+            const color = keepColor || model.colors.find(c => c.stock > 0) || model.colors[0];
+            activeColorId = color ? color.id : null;
+            if (!keepCurrent) activePhotoIndex = 0;
+            syncBundleColorSelections(model);
+        }
 
+        // جلب المنتجات المنشورة والمخزون من الشيت بالتوازي، دون تعطيل عرض المتجر
+        async function fetchRemoteData() {
+            const jobs = [];
+            if (!appState.dirty) {
+                jobs.push((async () => {
+                    try {
+                        const ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+                        const tm = ctrl ? setTimeout(() => ctrl.abort(), 8000) : null;
+                        const res = await fetch('products.json?v=' + Date.now(), { cache: 'no-store', signal: ctrl ? ctrl.signal : undefined });
+                        if (tm) clearTimeout(tm);
+                        if (res.ok) {
+                            const remote = await res.json();
+                            if (remote && Array.isArray(remote.models) && remote.models.length) {
+                                appState.models = remote.models;
+                                const keepPin = appState.config && appState.config.adminPin;
+                                appState.config = Object.assign({}, appState.config || {}, remote.config || {});
+                                if (keepPin) appState.config.adminPin = keepPin;
+                                normalizeState();
+                            }
+                        }
+                    } catch (e) {}
+                })());
+            }
+            await Promise.all(jobs);
+            await loadSheetStock();
+        }
+
+        function renderWholeStore(keepCurrent) {
+            normalizeState();
+            pickActiveModel(keepCurrent);
             renderBrandLogos();
             applyConfigToUI();
             renderStorefront();
+        }
+
+        async function initStore() {
+            let saved = null;
+            try { saved = localStorage.getItem('durra_luxury_store_58_v1'); } catch (e) { saved = null; }
+            let hadCache = false;
+            if (saved) {
+                try { appState = JSON.parse(saved); hadCache = !!(appState.models && appState.models.length); } catch (e) { hadCache = false; }
+            }
+            if (!hadCache) appState.models = JSON.parse(JSON.stringify(INITIAL_MODELS));
+            normalizeState();
+
+            // أول زيارة بدون نسخة محفوظة: ننتظر المنتجات حتى 3 ثوانٍ كحد أقصى لتفادي الشاشة الفارغة
+            const refresh = fetchRemoteData();
+            if (!hadCache) {
+                await Promise.race([refresh, new Promise(r => setTimeout(r, 3000))]);
+            }
+
+            renderWholeStore(false);
             updateOrdersCounter();
             startSocialProofLoop();
             checkSecretAdminTrigger();
+
+            // بعد الانتهاء من الجلب: نحدّث العرض بهدوء إن تغيّر شيء ونحفظ نسخة للزيارات القادمة
+            refresh.then(function () {
+                const snapshot = JSON.stringify(appState.models);
+                if (snapshot !== initStore._lastSnapshot) {
+                    initStore._lastSnapshot = snapshot;
+                    renderWholeStore(true);
+                    try { localStorage.setItem('durra_luxury_store_58_v1', JSON.stringify(appState)); } catch (e) {}
+                }
+            }).catch(function () {});
+            initStore._lastSnapshot = initStore._lastSnapshot || JSON.stringify(appState.models);
         }
 
         function renderBrandLogos() {
@@ -1638,6 +1701,7 @@
                             <div class="flex items-center gap-2.5">
                                 <input type="radio" name="bundle" ${selectedBundleQty === 2 ? 'checked' : ''} class="accent-burgundy-900">
                                 <span class="text-xs font-bold text-stone-800">طقمين (2 قطع)</span>
+                                ${(2 * model.price - model.bundle2Price) > 0 ? `<span class="text-[10px] font-extrabold text-white bg-orange-500 px-2 py-0.5 rounded-full">وفّري ${(2 * model.price - model.bundle2Price).toLocaleString()} دج</span>` : ''}
                             </div>
                             <span class="text-xs sm:text-sm font-extrabold text-burgundy-900">${model.bundle2Price.toLocaleString()} دج</span>
                         </label>
@@ -1645,6 +1709,7 @@
                             <div class="flex items-center gap-2.5">
                                 <input type="radio" name="bundle" ${selectedBundleQty === 3 ? 'checked' : ''} class="accent-burgundy-900">
                                 <span class="text-xs font-bold text-stone-800">3 أطقم (3 قطع)</span>
+                                ${(3 * model.price - model.bundle3Price) > 0 ? `<span class="text-[10px] font-extrabold text-white bg-orange-500 px-2 py-0.5 rounded-full">وفّري ${(3 * model.price - model.bundle3Price).toLocaleString()} دج</span>` : ''}
                             </div>
                             <span class="text-xs sm:text-sm font-extrabold text-burgundy-900">${model.bundle3Price.toLocaleString()} دج</span>
                         </label>
@@ -1716,12 +1781,17 @@
                             <div class="flex flex-wrap items-center gap-3 mb-4">
                                 <span class="text-2xl sm:text-3xl font-black text-burgundy-900">${model.price.toLocaleString()} دج</span>
                                 <span class="bg-blush text-burgundy-900 border border-dusty/30 text-xs font-bold px-2.5 py-1 rounded-lg">البويرة: توصيل مجاني 🚚 • متوفر 58 ولاية</span>
-                                <span class="mr-auto text-xs font-bold px-2.5 py-1 rounded-lg ${stock > 0 ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-700'}">
-                                    ${stock > 0 ? `متوفر (${stock} قطع)` : 'نفدت الكمية'}
+                                <span class="mr-auto text-xs font-bold px-2.5 py-1 rounded-lg ${stock > 0 ? (stock <= 5 ? 'bg-orange-50 text-orange-700 urgent-pulse' : 'bg-emerald-50 text-emerald-800') : 'bg-red-50 text-red-700'}">
+                                    ${stock > 0 ? (stock <= 5 ? `🔥 بقي ${stock} قطع فقط` : `متوفر (${stock} قطع)`) : 'نفدت الكمية'}
                                 </span>
                             </div>
 
-                            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed mb-5">${model.description}</p>
+                            <div class="grid grid-cols-3 gap-2 mb-4 text-center">
+                                <div class="bg-blush rounded-xl py-2 px-1 text-[10px] sm:text-xs font-bold text-burgundy-900 flex flex-col items-center gap-1"><span class="ic-emoji text-base">👁️</span><span class="ic-line"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>معاينة قبل الدفع</div>
+                                <div class="bg-blush rounded-xl py-2 px-1 text-[10px] sm:text-xs font-bold text-burgundy-900 flex flex-col items-center gap-1"><span class="ic-emoji text-base">💵</span><span class="ic-line"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></span>الدفع عند الاستلام</div>
+                                <div class="bg-blush rounded-xl py-2 px-1 text-[10px] sm:text-xs font-bold text-burgundy-900 flex flex-col items-center gap-1"><span class="ic-emoji text-base">🚚</span><span class="ic-line"><svg viewBox="0 0 24 24"><path d="M1 6h13v10H1zM14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>توصيل 58 ولاية</div>
+                            </div>
+<p class="text-xs sm:text-sm text-stone-600 leading-relaxed mb-5">${model.description}</p>
 
                             <div class="mb-5">
                                 <div class="flex items-center justify-between mb-2">
@@ -1792,7 +1862,7 @@
                                 <div class="space-y-2.5 pt-1">
                                     <button type="submit" ${stock <= 0 ? 'disabled' : ''} 
                                         class="w-full py-3.5 rounded-xl font-extrabold text-sm sm:text-base text-white shadow-lg transition flex items-center justify-center gap-2
-                                        ${stock > 0 ? 'messenger-grad pulse-order hover:opacity-95 cursor-pointer' : 'bg-stone-400 cursor-not-allowed'}">
+                                        ${stock > 0 ? 'cta-orange pulse-order cursor-pointer' : 'bg-stone-400 cursor-not-allowed'}">
                                         <i class="fa-brands fa-facebook-messenger text-lg"></i>
                                         <span>${stock > 0 ? 'تأكيد وإرسال الطلب عبر ماسنجر (Messenger)' : 'نفدت الكمية لهذا اللون'}</span>
                                     </button>
@@ -2525,6 +2595,21 @@
             renderAdminDashboard();
             showToast('تمت إعادة ضبط المتجر بنجاح');
         }
+
+        // معاينة التصميم (?design=1)
+        function setDesign(kind, cls) {
+            const all = kind === 'f' ? ['f-tajawal', 'f-classic', 'f-plex'] : ['i-line'];
+            all.forEach(function (c) { document.body.classList.remove(c); });
+            if (cls) document.body.classList.add(cls);
+        }
+        (function initDesignPreview() {
+            if (location.search.indexOf('design=1') === -1) return;
+            const l = document.createElement('link');
+            l.rel = 'stylesheet';
+            l.href = 'https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Almarai:wght@400;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap';
+            document.head.appendChild(l);
+            document.getElementById('design-panel').classList.remove('hidden');
+        })();
 
         function safeInitStore() {
             initStore().catch(function (err) {
